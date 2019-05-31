@@ -4,7 +4,7 @@ export default class Auth {
     auth0 = new auth0.WebAuth({
         domain: 'akshay-gadkari.auth0.com',
         clientID: 'fX2Ov3PrG67snp7CsUrUFcFE8RN5aglD',
-        redirectUri: 'http://localhost:3000/callback',
+        redirectUri: 'https://wellness-bet-frontend.herokuapp.com/callback',
         responseType: 'token id_token',
         scope: 'openid'
     });
