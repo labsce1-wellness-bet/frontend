@@ -9,7 +9,7 @@ const auth = new Auth();
 auth.login();
 
 //The name of the tab
-document.title = 'Wellness Bet';
+document.title = 'Wellness Bet deploy';
 
 const App: React.FC = () => {
     return (
