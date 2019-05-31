@@ -14,7 +14,6 @@ document.title = 'Wellness Bet deploy';
 const App: React.FC = () => {
     return (
         <div className="App">
-            <script type="text/javascript" src="node_modules/auth0-js/build/auth0.js"></script>
             <Route exact path="/" component={Home} />
             <Route exact path="/callback" component={Callback} />
         </div>
