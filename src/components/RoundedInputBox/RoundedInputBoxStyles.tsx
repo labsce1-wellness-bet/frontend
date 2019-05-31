@@ -5,17 +5,18 @@ const InputBoxWrapper = styled.div`
   position: relative;
   background: rgba(128, 128, 128, 0.1);
   max-width: 600px;
+  width: 100%;
 `;
 
 const Icon = styled.div`
   position: absolute;
   top: 50%;
-  left: 0;
+  left: 16px;
   transform: translateY(-50%);
   color: white;
 `;
 const InputBox = styled.input`
-  padding: 1.4em 2.4em;
+  padding: 1.4em 2em 1.4em 4em;
   width: 100%;
   color: white;
   background: none;
