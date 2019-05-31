@@ -5,6 +5,7 @@ interface RoundedInputBoxProps {
   value: string;
   placeholder: string;
   setValue: Function;
+  [key: string]: any;
 }
 
 const RoundedInputBox: React.SFC<RoundedInputBoxProps> = props => {

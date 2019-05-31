@@ -4,7 +4,6 @@ const InputBoxWrapper = styled.div`
   display: flex;
   position: relative;
   background: rgba(128, 128, 128, 0.1);
-  max-width: 600px;
   width: 100%;
 `;
 
