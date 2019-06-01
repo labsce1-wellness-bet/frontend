@@ -1,4 +1,7 @@
+// Package imports
 import React, { useState } from "react";
+
+// Custom Components
 import {
   HomeWrapper,
   BackgroundImage,
@@ -8,12 +11,17 @@ import {
   FooterContent,
   StyledLink,
 } from "./HomeStyles";
-import { Logo } from "./lib/assets/Logo";
 import RoundedInputBox from "components/RoundedInputBox/RoundedInputBox";
-import { AccountCircle, Lock } from "@material-ui/icons";
-import Fab from "@material-ui/core/Fab";
+
+// Lib folder files
+import { Logo } from "./lib/assets/Logo";
 import KittySleepingSrc from "./lib/assets/kitty-sleeping.png";
 import base64KittySleeping from "./lib/base64Data/base64-kitty-sleeping";
+
+// Material UI Components
+import { AccountCircle, Lock } from "@material-ui/icons";
+import Fab from "@material-ui/core/Fab";
+
 export interface HomeProps {}
 
 const Home: React.SFC<HomeProps> = () => {
