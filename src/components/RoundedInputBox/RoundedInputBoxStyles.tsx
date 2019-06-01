@@ -3,7 +3,7 @@ import styled from "styled-components";
 const InputBoxWrapper = styled.div`
   display: flex;
   position: relative;
-  background: rgba(128, 128, 128, 0.1);
+  background: rgba(128, 128, 128, 0.3);
   width: 100%;
 `;
 
