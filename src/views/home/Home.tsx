@@ -57,8 +57,8 @@ const Home: React.SFC<HomeProps> = () => {
           </Fab>
         </GetStartedForm>
         <FooterContent>
-          <StyledLink>Create Account</StyledLink>
-          <StyledLink>Need Help?</StyledLink>
+          <StyledLink to="/">Create Account</StyledLink>
+          <StyledLink to="/">Need Help?</StyledLink>
         </FooterContent>
       </MainContent>
     </HomeWrapper>
