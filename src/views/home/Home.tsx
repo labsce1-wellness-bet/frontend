@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {
   HomeWrapper,
+  BackgroundImage,
   MainContent,
   HeaderContent,
   GetStartedForm,
@@ -9,6 +10,8 @@ import { Logo } from "./lib/assets/Logo";
 import RoundedInputBox from "components/RoundedInputBox/RoundedInputBox";
 import { AccountCircle, Lock } from "@material-ui/icons";
 import Fab from "@material-ui/core/Fab";
+import KittySleepingSrc from "./lib/assets/kitty-sleeping.png";
+import base64KittySleeping from "./lib/base64Data/base64-kitty-sleeping";
 export interface HomeProps {}
 
 const Home: React.SFC<HomeProps> = () => {
@@ -16,6 +19,12 @@ const Home: React.SFC<HomeProps> = () => {
   const [password, setPassword] = useState("");
   return (
     <HomeWrapper>
+      <BackgroundImage
+        className="background-home-img"
+        alt={""}
+        base64={base64KittySleeping}
+        src={KittySleepingSrc}
+      />
       <MainContent>
         <HeaderContent>
           <Logo height="34" width="61" fill="none" />

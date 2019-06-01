@@ -1,19 +1,36 @@
 import styled from "styled-components";
-
+import BlurImage from "components/BlurImage/BlurImage";
 const HomeWrapper = styled.div`
   display: flex;
   justify-content: center;
-  max-width: 100vw;
+  position: relative;
   width: 100%;
   height: 100vh;
-  padding: 2em 1em;
   color: white;
+  overflow: hidden;
+`;
+const BackgroundImage = styled(BlurImage)`
+  filter: brightness(60%);
+  /* Set up positioning */
+  /* Set rules to fill background */
+  min-height: 100%;
+  min-width: 600px;
+
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+  /* Set up positioning */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
 `;
 const MainContent = styled.main`
   display: flex;
   flex-direction: column;
   max-width: 600px;
   width: 100%;
+  padding: 2em 1em;
 `;
 const HeaderContent = styled.header`
   display: flex;
@@ -45,6 +62,7 @@ const FooterContent = styled.footer`
 `;
 export {
   HomeWrapper,
+  BackgroundImage,
   MainContent,
   HeaderContent,
   GetStartedForm,
