@@ -9,6 +9,7 @@ const HomeWrapper = styled.div`
   color: white;
   overflow: hidden;
 `;
+// https://css-tricks.com/almanac/properties/f/filter/
 const BackgroundImage = styled(BlurImage)`
   filter: brightness(40%);
   /* Set up positioning */
