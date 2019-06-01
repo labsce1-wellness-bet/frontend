@@ -10,7 +10,7 @@ const HomeWrapper = styled.div`
   overflow: hidden;
 `;
 const BackgroundImage = styled(BlurImage)`
-  filter: brightness(60%);
+  filter: brightness(40%);
   /* Set up positioning */
   /* Set rules to fill background */
   min-height: 100%;
