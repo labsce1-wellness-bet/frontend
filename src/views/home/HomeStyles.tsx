@@ -10,6 +10,9 @@ const HomeWrapper = styled.div`
   height: 100vh;
   color: white;
   overflow: hidden;
+  @media screen and (max-height: 475px) {
+    overflow: scroll;
+  }
 `;
 // https://css-tricks.com/almanac/properties/f/filter/
 const BackgroundImage = styled(BlurImage)`
@@ -34,6 +37,9 @@ const MainContent = styled.main`
   max-width: 450px;
   width: 100%;
   padding: 2em 1em;
+  @media screen and (max-height: 475px) {
+    padding: 0 1em;
+  }
 `;
 const HeaderContent = styled.header`
   display: flex;
