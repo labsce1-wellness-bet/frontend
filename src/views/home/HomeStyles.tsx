@@ -55,12 +55,12 @@ const GetStartedForm = styled.form`
   flex-direction: column;
   align-items: stretch;
   width: 100%;
-  margin-bottom: 48px;
+  margin-bottom: 36px;
   & .input-box {
     margin-bottom: 16px;
   }
   & .submit-btn {
-    margin-top: 36px;
+    margin-top: 24px;
   }
 `;
 const FooterContent = styled.footer`
