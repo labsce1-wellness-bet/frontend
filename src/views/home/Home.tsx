@@ -5,6 +5,8 @@ import {
   MainContent,
   HeaderContent,
   GetStartedForm,
+  FooterContent,
+  StyledLink,
 } from "./HomeStyles";
 import { Logo } from "./lib/assets/Logo";
 import RoundedInputBox from "components/RoundedInputBox/RoundedInputBox";
@@ -46,10 +48,18 @@ const Home: React.SFC<HomeProps> = () => {
             placeholder={"Password"}
             className="input-box"
           />
-          <Fab color="primary" variant="extended" aria-label="Get Started">
+          <Fab
+            className="submit-btn"
+            color="primary"
+            variant="extended"
+            aria-label="Get Started">
             Get Started
           </Fab>
         </GetStartedForm>
+        <FooterContent>
+          <StyledLink>Create Account</StyledLink>
+          <StyledLink>Need Help?</StyledLink>
+        </FooterContent>
       </MainContent>
     </HomeWrapper>
   );

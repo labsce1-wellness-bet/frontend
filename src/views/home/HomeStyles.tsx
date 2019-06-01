@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import BlurImage from "components/BlurImage/BlurImage";
+import { Link } from "react-router-dom";
+
 const HomeWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -29,7 +31,7 @@ const BackgroundImage = styled(BlurImage)`
 const MainContent = styled.main`
   display: flex;
   flex-direction: column;
-  max-width: 600px;
+  max-width: 450px;
   width: 100%;
   padding: 2em 1em;
 `;
@@ -53,13 +55,25 @@ const GetStartedForm = styled.form`
   flex-direction: column;
   align-items: stretch;
   width: 100%;
+  margin-bottom: 48px;
   & .input-box {
     margin-bottom: 16px;
+  }
+  & .submit-btn {
+    margin-top: 36px;
   }
 `;
 const FooterContent = styled.footer`
   display: flex;
   justify-content: space-between;
+`;
+const StyledLink = styled(Link)`
+  color: #acacac;
+  text-decoration-line: none;
+  &:hover {
+    color: white;
+    text-decoration-line: underline;
+  }
 `;
 export {
   HomeWrapper,
@@ -68,4 +82,5 @@ export {
   HeaderContent,
   GetStartedForm,
   FooterContent,
+  StyledLink,
 };
