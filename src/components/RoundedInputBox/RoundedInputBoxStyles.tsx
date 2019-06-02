@@ -21,6 +21,13 @@ const InputBox = styled.input`
   color: white;
   background: none;
   border: none;
+  outline: none;
+  border-radius: 50px;
+  &:focus {
+    -webkit-box-shadow: 0px 0px 23px -7px rgba(224, 224, 224, 1);
+    -moz-box-shadow: 0px 0px 23px -7px rgba(224, 224, 224, 1);
+    box-shadow: 0px 0px 23px -7px rgba(224, 224, 224, 1);
+  }
   &::placeholder {
     color: white;
   }
