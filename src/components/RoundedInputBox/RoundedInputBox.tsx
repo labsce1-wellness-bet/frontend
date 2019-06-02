@@ -3,6 +3,7 @@ import React from "react";
 interface RoundedInputBoxProps {
   icon: React.ReactElement;
   className: string;
+  type: string;
   [key: string]: any;
 }
 

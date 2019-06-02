@@ -44,6 +44,7 @@ const Auth: React.SFC<AuthProps> = () => {
           <RoundedInputBox
             icon={<AccountCircle color="inherit" />}
             value={username}
+            type="text"
             onChange={(e: any) => {
               setUsername(e.target.value);
             }}
@@ -53,6 +54,7 @@ const Auth: React.SFC<AuthProps> = () => {
           <RoundedInputBox
             icon={<Lock color="inherit" />}
             value={password}
+            type="password"
             onChange={(e: any) => {
               setPassword(e.target.value);
             }}
