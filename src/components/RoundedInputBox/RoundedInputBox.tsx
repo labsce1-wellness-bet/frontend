@@ -2,24 +2,19 @@ import { InputBoxWrapper, Icon, InputBox } from "./RoundedInputBoxStyles";
 import React from "react";
 interface RoundedInputBoxProps {
   icon: React.ReactElement;
-  value: string;
-  placeholder: string;
-  setValue: Function;
+  className: string;
   [key: string]: any;
 }
 
 const RoundedInputBox: React.SFC<RoundedInputBoxProps> = props => {
   return (
-    <InputBoxWrapper {...props}>
+    <InputBoxWrapper className={props.className}>
       <Icon>{React.cloneElement(props.icon, {})}</Icon>
-      <InputBox
-        type="text"
-        value={props.value}
-        placeholder={props.placeholder}
-        onChange={(e: any) => {
-          props.setValue(e.target.value);
-        }}
-      />
+      {React.cloneElement(<InputBox />, {
+        ...props,
+        icon: null,
+        className: "",
+      })}
     </InputBoxWrapper>
   );
 };
