@@ -5,6 +5,7 @@ const InputBoxWrapper = styled.div`
   position: relative;
   background: rgba(128, 128, 128, 0.3);
   width: 100%;
+  border-radius: 50px;
 `;
 
 const Icon = styled.div`
