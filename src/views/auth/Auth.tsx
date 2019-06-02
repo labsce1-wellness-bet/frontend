@@ -3,14 +3,14 @@ import React, { useState } from "react";
 
 // Custom Components
 import {
-  HomeWrapper,
+  AuthWrapper,
   BackgroundImage,
   MainContent,
   HeaderContent,
   GetStartedForm,
   FooterContent,
   StyledLink,
-} from "./HomeStyles";
+} from "./AuthStyles";
 import RoundedInputBox from "components/RoundedInputBox/RoundedInputBox";
 
 // Lib folder files
@@ -22,15 +22,14 @@ import base64KittySleeping from "./lib/base64Data/base64-kitty-sleeping";
 import { AccountCircle, Lock } from "@material-ui/icons";
 import Fab from "@material-ui/core/Fab";
 
-export interface HomeProps {}
+export interface AuthProps {}
 
-const Home: React.SFC<HomeProps> = () => {
+const Auth: React.SFC<AuthProps> = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   return (
-    <HomeWrapper>
+    <AuthWrapper>
       <BackgroundImage
-        className="background-home-img"
         alt={""}
         base64={base64KittySleeping}
         src={KittySleepingSrc}
@@ -69,8 +68,8 @@ const Home: React.SFC<HomeProps> = () => {
           <StyledLink to="/">Need Help?</StyledLink>
         </FooterContent>
       </MainContent>
-    </HomeWrapper>
+    </AuthWrapper>
   );
 };
 
-export default Home;
+export default Auth;

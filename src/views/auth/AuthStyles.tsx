@@ -2,7 +2,7 @@ import styled from "styled-components";
 import BlurImage from "components/BlurImage/BlurImage";
 import { Link } from "react-router-dom";
 
-const HomeWrapper = styled.div`
+const AuthWrapper = styled.div`
   display: flex;
   justify-content: center;
   position: relative;
@@ -82,7 +82,7 @@ const StyledLink = styled(Link)`
   }
 `;
 export {
-  HomeWrapper,
+  AuthWrapper,
   BackgroundImage,
   MainContent,
   HeaderContent,
