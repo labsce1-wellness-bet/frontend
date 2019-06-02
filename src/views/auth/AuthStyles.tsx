@@ -11,7 +11,7 @@ const AuthWrapper = styled.div`
   color: white;
   overflow: hidden;
   @media screen and (max-height: 475px) {
-    overflow: scroll;
+    overflow-y: scroll;
   }
 `;
 // https://css-tricks.com/almanac/properties/f/filter/
@@ -38,7 +38,7 @@ const MainContent = styled.main`
   width: 100%;
   padding: 2em 1em;
   @media screen and (max-height: 475px) {
-    padding: 0 1em;
+    padding: 1em 0.6em;
   }
 `;
 const HeaderContent = styled.header`
