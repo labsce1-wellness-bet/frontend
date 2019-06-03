@@ -1,11 +1,25 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import Auth from "views/auth/Auth";
+import Callback from "views/callback/Callback";
+import AuthPage from "views/auth/Auth";
+import Auth from "./Auth/Auth"; //Auth0 code
+
+//run auth0
+const auth = new Auth();
+auth.login();
+
+//The name of the tab
+document.title = "Wellness Bet deploy";
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <Route exact path="/" component={Auth} />
+      <Route exact path="/" component={AuthPage} />
+      <Route exact path="/callback" component={Callback} />
+      <script
+        type="text/javascript"
+        src="node_modules/auth0-js/build/auth0.js"
+      />
     </div>
   );
 };
