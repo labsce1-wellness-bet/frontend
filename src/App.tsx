@@ -3,6 +3,7 @@ import { Route } from "react-router-dom";
 import Home from "views/home/Home";
 import Callback from "views/callback/Callback";
 import Auth from './Auth/Auth'; //Auth0 code
+import Auth0Lock from "auth0-lock";
 
 //run auth0
 const auth = new Auth();
