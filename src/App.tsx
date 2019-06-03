@@ -16,10 +16,6 @@ const App: React.FC = () => {
     <div className="App">
       <Route exact path="/" component={AuthPage} />
       <Route exact path="/callback" component={Callback} />
-      <script
-        type="text/javascript"
-        src="node_modules/auth0-js/build/auth0.js"
-      />
     </div>
   );
 };
