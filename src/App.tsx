@@ -2,6 +2,8 @@ import React from "react";
 import { Route } from "react-router-dom";
 import Home from "views/home/Home";
 import Callback from "views/callback/Callback";
+import Dashboard from "views/dashboard/Dashboard";
+import CreateGroupMethod from "views/createGroupMethod/CreateGroupMethod";
 import Auth from './Auth/Auth'; //Auth0 code
 
 //run auth0
@@ -18,6 +20,7 @@ const App: React.FC = () => {
             <Route exact path="/" component={Home} />
             <Route exact path="/callback" component={Callback} />
             <Route exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/creategroupmethod" component={CreateGroupMethod} />
         </div>
     );
 };
