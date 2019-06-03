@@ -17,6 +17,7 @@ const App: React.FC = () => {
             <script type="text/javascript" src="node_modules/auth0-js/build/auth0.js"></script>
             <Route exact path="/" component={Home} />
             <Route exact path="/callback" component={Callback} />
+            <Route exact path="/dashboard" component={Dashboard} />
         </div>
     );
 };
