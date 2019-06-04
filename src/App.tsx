@@ -1,6 +1,7 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import Callback from "views/callback/Callback";
+import Test from "views/test/Test";
 import AuthPage from "views/auth/Auth";
 import { GlobalContext } from "./GlobalContext/GlobalContext";
 
@@ -17,6 +18,7 @@ const App: React.FC = () => {
       <GlobalContext.Provider value={{}}>
       <Route exact path="/" component={AuthPage} />
       <Route exact path="/callback" component={Callback} />
+        <Route exact path="/test" component={Test} />
       </GlobalContext.Provider>
     </div>
   );
