@@ -1,38 +1,23 @@
 import React from "react";
-
+import base64KittySleeping from "../auth/lib/base64Data/base64-kitty-sleeping";
+import UploadImageWidget from "components/UploadImageWidget/UploadImageWidget";
 interface Props {}
+
 //@ts-ignore
 
 const Test: React.SFC<Props> = () => {
   return (
     <div>
-      <button
-        onClick={() => {
-          console.log({
-            cloudName: process.env.REACT_APP_CLOUD_NAME,
-            apiKey: process.env.REACT_APP_CLOUD_API_KEY,
-            resourceType: "image",
-            uploadPreset: "wb_users_avatars",
-          });
-          //@ts-ignore
-          window.cloudinary.openUploadWidget(
-            {
-              apiKey: process.env.REACT_APP_CLOUD_API_KEY,
-              resourceType: "image",
-              uploadPreset: "kntzkorb",
-              public_id: "whatever",
-            },
-            //@ts-ignore
-            (error, result) => {
-              console.log({ result });
-              if (!error && result && result.event === "success") {
-                console.log("Done! Here is the image info: ", result.info);
-              }
-            },
-          );
-        }}>
-        Upload
-      </button>
+      <UploadImageWidget
+        instructionText={"Drag and drop photo evidence of payment here"}
+        cloudinaryUploadData={{
+          base64ImageData: base64KittySleeping,
+          fileOptions: {
+            uploadPreset: "",
+            publicId: "",
+          },
+        }}
+      />
     </div>
   );
 };
