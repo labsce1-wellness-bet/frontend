@@ -2,7 +2,7 @@ import React from "react";
 import { Route } from "react-router-dom";
 import Callback from "views/callback/Callback";
 import AuthPage from "views/auth/Auth";
-import Auth from "./Auth/Auth"; //Auth0 code
+import Auth from "./Auth/Auth";
 
 //run auth0
 const auth = new Auth();
