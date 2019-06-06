@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { CloudinaryUpload } from "../interfaces";
+import React from "react";
 import {
   UploadWrapper,
   UploadImageInput,
@@ -8,59 +7,53 @@ import {
   StartingContent,
   AfterUploadContent,
 } from "./UploadImageWidgetStyles";
-import axios from "axios";
+import CircularProgress from "@material-ui/core/CircularProgress";
 interface Props {
-  cloudinaryUploadData: CloudinaryUpload;
   startingInstructions: String;
   afterUploadInstructions: String;
+  dispatch: Function;
+  state: {
+    isImageUploaded: boolean;
+    isLoading: boolean;
+    hasError: boolean;
+    base64ImageData: string;
+  };
 }
 
 const UploadWidgetImageProps: React.SFC<Props> = ({
-  cloudinaryUploadData,
   startingInstructions,
   afterUploadInstructions,
+  dispatch,
+  state,
 }) => {
-  const [base64Image, setBase64Image] = useState("");
-  const [isImageUploaded, setIsImageUploaded] = useState(false);
+  const { isImageUploaded, isLoading, hasError, base64ImageData } = state;
   const fileSelectHandler = (e: any) => {
     const file = e.target.files[0];
 
     const reader = new FileReader();
     //@ts-nocheck
     const url = reader.readAsDataURL(file);
-
+    reader.onloadstart = () => {
+      dispatch({ type: "UPLOADING_IMAGE" });
+    };
     reader.onloadend = () => {
-      setBase64Image(reader.result as string);
-      setIsImageUploaded(true);
+      dispatch({ type: "UPLOADED_IMAGE", base64ImageData: reader.result });
+    };
+    reader.onerror = () => {
+      dispatch({ type: "UPLOADING_IMAGE_ERROR" });
     };
   };
-  const uploadImage = async () => {
-    try {
-      const { data } = await axios({
-        method: "post",
-        url:
-          process.env.NODE_ENV === "production"
-            ? process.env.REACT_APP_BACKEND_PRODUCTION_URL
-            : process.env.REACT_APP_BACKEND_LOCAL_URL,
-        data: {
-          ...cloudinaryUploadData,
-        },
-      });
-      return data;
-    } catch (err) {
-      console.log(err);
-    }
-  };
+
   return (
-    <UploadWrapper isImageUploaded={isImageUploaded}>
-      <OverlayLabel for="browse-files" />
+    <UploadWrapper isImageUploaded={isImageUploaded} hasError={hasError}>
+      <OverlayLabel htmlFor="browse-files" />
       <UploadImageInput
         type="file"
         name="browse-files"
         id="browse-files"
         onChange={fileSelectHandler}
       />
-      {base64Image ? <Image src={base64Image} alt="" /> : null}
+      {base64ImageData ? <Image src={base64ImageData} alt="" /> : null}
 
       {isImageUploaded ? (
         <AfterUploadContent className="upload-image-widget__after-upload-content">
@@ -75,6 +68,7 @@ const UploadWidgetImageProps: React.SFC<Props> = ({
           <h3>Click me</h3>
         </StartingContent>
       )}
+      {isLoading && <CircularProgress />}
     </UploadWrapper>
   );
 };
