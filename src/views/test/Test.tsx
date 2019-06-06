@@ -42,7 +42,7 @@ const Test: React.SFC<Props> = () => {
         onClick={async () => {
           const data = await axios({
             method: "get",
-            url: process.env.REACT_APP_BACKEND_PRODUCTION_URL + "/api/user/1",
+            url: process.env.REACT_APP_BACKEND_PRODUCTION_URL + "api/user/1",
           });
           console.log(data);
         }}>

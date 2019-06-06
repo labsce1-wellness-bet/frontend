@@ -10,11 +10,11 @@ export default async (
     }
     const { data } = await axios({
       method: "post",
+
       url:
         process.env.NODE_ENV === "production"
-          ? process.env.REACT_APP_BACKEND_PRODUCTION_URL +
-            "/image/signed-upload"
-          : process.env.REACT_APP_BACKEND_LOCAL_URL + "/image/signed-upload",
+          ? process.env.REACT_APP_BACKEND_PRODUCTION_URL + "image/signed-upload"
+          : process.env.REACT_APP_BACKEND_LOCAL_URL + "image/signed-upload",
       data: {
         fileParams,
         base64ImageData,
