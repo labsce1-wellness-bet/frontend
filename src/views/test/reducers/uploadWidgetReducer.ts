@@ -1,16 +1,12 @@
 import { useReducer } from "react";
+import { UploadWidgetState } from "components/UploadImageWidget/upload-image-widget.interface";
 
 interface Action {
   type: string;
   [key: string]: any;
   base64ImageData: string;
 }
-interface State {
-  isLoading: boolean;
-  hasError: boolean;
-  isImageUploaded: boolean;
-  base64ImageData: string;
-}
+interface State extends UploadWidgetState {}
 const initialState = {
   isLoading: false,
   hasError: false,

@@ -7,17 +7,13 @@ import {
   StartingContent,
   AfterUploadContent,
 } from "./UploadImageWidgetStyles";
+import { UploadWidgetState } from "./upload-image-widget.interface";
 import CircularProgress from "@material-ui/core/CircularProgress";
 interface Props {
   startingInstructions: String;
   afterUploadInstructions: String;
   dispatch: Function;
-  state: {
-    isImageUploaded: boolean;
-    isLoading: boolean;
-    hasError: boolean;
-    base64ImageData: string;
-  };
+  state: UploadWidgetState;
 }
 
 const UploadWidgetImageProps: React.SFC<Props> = ({
@@ -31,13 +27,14 @@ const UploadWidgetImageProps: React.SFC<Props> = ({
     const file = e.target.files[0];
 
     const reader = new FileReader();
-    //@ts-nocheck
     const url = reader.readAsDataURL(file);
+
     reader.onloadstart = () => {
       dispatch({ type: "UPLOADING_IMAGE" });
     };
     reader.onloadend = () => {
       dispatch({ type: "UPLOADED_IMAGE", base64ImageData: reader.result });
+      console.log(url);
     };
     reader.onerror = () => {
       dispatch({ type: "UPLOADING_IMAGE_ERROR" });
