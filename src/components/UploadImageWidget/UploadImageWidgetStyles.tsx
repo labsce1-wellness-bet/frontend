@@ -4,7 +4,8 @@ const UploadWrapper = styled.div`
   display: inline-block;
   width: ${(props: { isImageUploaded: boolean }) =>
     props.isImageUploaded ? "auto" : "100%"};
-  border: 2px dashed #006eff;
+  border: 2px dashed
+    ${(props: { hasError: boolean }) => (props.hasError ? "red" : "#006eff")};
   color: #006eff;
   max-width: 800px;
   position: relative;
