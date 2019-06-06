@@ -52,7 +52,7 @@ const UploadWidgetImageProps: React.SFC<Props> = ({
     }
   };
   return (
-    <UploadWrapper>
+    <UploadWrapper isImageUploaded={isImageUploaded}>
       <OverlayLabel for="browse-files" />
       <UploadImageInput
         type="file"

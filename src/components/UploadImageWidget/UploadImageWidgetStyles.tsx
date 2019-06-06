@@ -1,15 +1,14 @@
 import styled from "styled-components";
 
 const UploadWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+  display: inline-block;
+  width: ${(props: { isImageUploaded: boolean }) =>
+    props.isImageUploaded ? "auto" : "100%"};
   border: 2px dashed #006eff;
   color: #006eff;
   max-width: 800px;
   position: relative;
-  padding: 5em;
+  padding: 0em;
 `;
 const UploadImageInput = styled.input`
   opacity: 0;
@@ -33,9 +32,7 @@ const StartingContent = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  top: 0;
-  bottom: 0;
+  height: 100%;
   width: 100%;
   & > * {
     margin: 0;
