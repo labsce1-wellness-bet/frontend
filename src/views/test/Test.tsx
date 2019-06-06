@@ -1,10 +1,10 @@
 import React from "react";
 import UploadImageWidget from "components/UploadImageWidget/UploadImageWidget";
-import {
-  uploadWidgetReducer,
-  uploadToCloudinaryReducer,
-} from "./reducers/index";
-import { uploadImageToCloudinary } from "lib/utils/index";
+import uploadWidgetReducer from "components/UploadImageWidget/uploadWidgetReducer";
+
+import uploadToCloudinaryReducer from "lib/utils/uploadImageToCloudinary/uploadToCloudinaryReducer";
+import uploadImageToCloudinary from "lib/utils/uploadImageToCloudinary/uploadImageToCloudinary";
+
 interface Props {}
 
 const Test: React.SFC<Props> = () => {
@@ -32,7 +32,8 @@ const Test: React.SFC<Props> = () => {
             base64ImageData,
             cloudDispatch,
           );
-          console.log(data);
+          console.log({ data });
+          console.log({ cloudState });
         }}>
         Upload Image
       </button>
