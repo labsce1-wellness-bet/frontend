@@ -5,10 +5,6 @@ import Test from "views/test/Test";
 import AuthPage from "views/auth/Auth";
 import { GlobalContext } from "./GlobalContext/GlobalContext";
 
-//run auth0
-const auth = new Auth();
-auth.login();
-
 //The name of the tab
 document.title = "Wellness Bet deploy";
 
@@ -16,8 +12,8 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <GlobalContext.Provider value={{}}>
-      <Route exact path="/" component={AuthPage} />
-      <Route exact path="/callback" component={Callback} />
+        <Route exact path="/" component={AuthPage} />
+        <Route exact path="/callback" component={Callback} />
         <Route exact path="/test" component={Test} />
       </GlobalContext.Provider>
     </div>
