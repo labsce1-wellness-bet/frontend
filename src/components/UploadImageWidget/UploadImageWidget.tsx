@@ -1,22 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import { CloudinaryUpload } from "../interfaces";
 import {
   UploadWrapper,
-  UploadContent,
-  CtaInstruction,
+  UploadImageInput,
+  OverlayLabel,
+  Image,
+  StartingContent,
+  AfterUploadContent,
 } from "./UploadImageWidgetStyles";
 import axios from "axios";
-
 interface Props {
   cloudinaryUploadData: CloudinaryUpload;
-  instructionText: String;
+  startingInstructions: String;
+  afterUploadInstructions: String;
 }
 
 const UploadWidgetImageProps: React.SFC<Props> = ({
   cloudinaryUploadData,
-  instructionText,
+  startingInstructions,
+  afterUploadInstructions,
 }) => {
-  const onSubmit = async () => {
+  const [base64Image, setBase64Image] = useState("");
+  const [isImageUploaded, setIsImageUploaded] = useState(false);
+  const fileSelectHandler = (e: any) => {
+    const file = e.target.files[0];
+
+    const reader = new FileReader();
+    //@ts-nocheck
+    const url = reader.readAsDataURL(file);
+
+    reader.onloadend = () => {
+      setBase64Image(reader.result as string);
+      setIsImageUploaded(true);
+    };
+  };
+  const uploadImage = async () => {
     try {
       const { data } = await axios({
         method: "post",
@@ -35,11 +53,28 @@ const UploadWidgetImageProps: React.SFC<Props> = ({
   };
   return (
     <UploadWrapper>
-      <UploadContent>
-        <CtaInstruction>{instructionText}</CtaInstruction>
-        <p>or</p>
-        <input type="file" />
-      </UploadContent>
+      <OverlayLabel for="browse-files" />
+      <UploadImageInput
+        type="file"
+        name="browse-files"
+        id="browse-files"
+        onChange={fileSelectHandler}
+      />
+      {base64Image ? <Image src={base64Image} alt="" /> : null}
+
+      {isImageUploaded ? (
+        <AfterUploadContent className="upload-image-widget__after-upload-content">
+          <h3>{afterUploadInstructions}</h3>
+          <p>or</p>
+          <h3>Click me</h3>
+        </AfterUploadContent>
+      ) : (
+        <StartingContent>
+          <h3>{startingInstructions}</h3>
+          <p>or</p>
+          <h3>Click me</h3>
+        </StartingContent>
+      )}
     </UploadWrapper>
   );
 };
