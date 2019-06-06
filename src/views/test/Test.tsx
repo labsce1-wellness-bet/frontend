@@ -5,6 +5,7 @@ import uploadWidgetReducer from "components/UploadImageWidget/uploadWidgetReduce
 import uploadToCloudinaryReducer from "lib/utils/uploadImageToCloudinary/uploadToCloudinaryReducer";
 import uploadImageToCloudinary from "lib/utils/uploadImageToCloudinary/uploadImageToCloudinary";
 
+import axios from "axios";
 interface Props {}
 
 const Test: React.SFC<Props> = () => {
@@ -36,6 +37,16 @@ const Test: React.SFC<Props> = () => {
           console.log({ cloudState });
         }}>
         Upload Image
+      </button>
+      <button
+        onClick={async () => {
+          const data = await axios({
+            method: "get",
+            url: process.env.REACT_APP_BACKEND_PRODUCTION_URL + "/api/user/1",
+          });
+          console.log(data);
+        }}>
+        Get user data
       </button>
     </div>
   );
