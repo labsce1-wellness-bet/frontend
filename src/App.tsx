@@ -4,19 +4,21 @@ import Callback from "views/callback/Callback";
 import Test from "views/test/Test";
 import AuthPage from "views/auth/Auth";
 import { GlobalContext } from "./GlobalContext/GlobalContext";
+import User from "views/user/user";
 
 //The name of the tab
 document.title = "Wellness Bet deploy";
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-      <GlobalContext.Provider value={{}}>
-        <Route exact path="/" component={AuthPage} />
-        <Route exact path="/callback" component={Callback} />
-        <Route exact path="/test" component={Test} />
-      </GlobalContext.Provider>
-    </div>
+      <div className="App">
+	  <GlobalContext.Provider value={{}}>
+              <Route exact path="/" component={AuthPage} />
+              <Route exact path="/callback" component={Callback} />
+              <Route exact path="/test" component={Test} />
+	      <Route exact path="/user" component={User} />
+	  </GlobalContext.Provider>
+      </div>
   );
 };
 
