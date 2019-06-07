@@ -1,28 +1,18 @@
 import * as React from "react";
-import axios from 'axios';
-
-//export interface HomeProps { }
+import Auth from '../../Auth/Auth';
 
 export default class User extends React.Component {
-    state = {
-	users: []
-    }
 
     componentDidMount() {
-	axios
-	    .get('https://wellness-bet-backend.herokuapp.com/api/user/1')
-	    .then(res => {
-		const users = res.data;
-		this.setState({users})
-	    })
-	    .catch(err => console.log(err));
+	const auth: any = new Auth();
+	auth.login();
     }
-    
+
     render() {
 	return (
 	    <div>
 		<h1>User</h1>
-		<h1>{this.state.users}</h1>
+		<h1>Log in here!</h1>
 	    </div>
 	)
     }
