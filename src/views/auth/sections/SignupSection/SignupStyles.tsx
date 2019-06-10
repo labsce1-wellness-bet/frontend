@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const LoginWrapper = styled.section``;
+const SignupWrapper = styled.section``;
 
-const LoginContent = styled.div`
+const SignupContent = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 450px;
@@ -18,17 +18,9 @@ const HeaderContent = styled.header`
   flex-direction: column;
   align-items: center;
   margin-bottom: 24px;
-  & .organization {
-    font-size: 1.6rem;
-  }
-  & .category {
-    font-size: 2rem;
-    font-weight: 600;
-    margin: 0;
-  }
 `;
 
-const GetStartedForm = styled.form`
+const CreateAccountForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -43,7 +35,7 @@ const GetStartedForm = styled.form`
 `;
 const FooterContent = styled.footer`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 `;
 const StyledLink = styled(Link)`
   color: #acacac;
@@ -54,10 +46,10 @@ const StyledLink = styled(Link)`
   }
 `;
 export {
-  LoginWrapper,
-  LoginContent,
+  SignupWrapper,
+  SignupContent,
   HeaderContent,
-  GetStartedForm,
+  CreateAccountForm,
   FooterContent,
   StyledLink,
 };
