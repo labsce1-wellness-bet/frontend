@@ -1,7 +1,7 @@
 import React from "react";
 import {
   LoginWrapper,
-  MainContent,
+  LoginContent,
   HeaderContent,
   GetStartedForm,
   FooterContent,
@@ -21,7 +21,7 @@ const LoginSection: React.SFC<Props> = ({ state, dispatch }) => {
   const { username, password } = state;
   return (
     <LoginWrapper>
-      <MainContent>
+      <LoginContent>
         <HeaderContent>
           <Logo height="34" width="61" fill="none" />
           <h1 className="organization">Wellness Bet</h1>
@@ -77,7 +77,7 @@ const LoginSection: React.SFC<Props> = ({ state, dispatch }) => {
           <StyledLink to="/">Create Account</StyledLink>
           <StyledLink to="/">Need Help?</StyledLink>
         </FooterContent>
-      </MainContent>
+      </LoginContent>
     </LoginWrapper>
   );
 };

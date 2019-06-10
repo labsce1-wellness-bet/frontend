@@ -14,7 +14,7 @@ const LoginWrapper = styled.section`
   }
 `;
 
-const MainContent = styled.main`
+const LoginContent = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 450px;
@@ -66,7 +66,7 @@ const StyledLink = styled(Link)`
 `;
 export {
   LoginWrapper,
-  MainContent,
+  LoginContent,
   HeaderContent,
   GetStartedForm,
   FooterContent,
