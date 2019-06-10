@@ -70,7 +70,7 @@ const LoginSection: React.SFC<Props> = ({ state, dispatch }) => {
             color="primary"
             variant="extended"
             aria-label="Get Started">
-            Get Started
+            Login
           </Fab>
         </GetStartedForm>
         <FooterContent>
