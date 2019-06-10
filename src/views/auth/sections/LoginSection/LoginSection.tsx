@@ -27,7 +27,12 @@ const LoginSection: React.SFC<Props> = ({ state, dispatch }) => {
           <h1 className="organization">Wellness Bet</h1>
           <h2 className="category">Sleep</h2>
         </HeaderContent>
-        <GetStartedForm>
+        {/* TODO: Form validation */}
+        <GetStartedForm
+          onSubmit={(e: React.SyntheticEvent) => {
+            e.preventDefault();
+            //TODO: When submitting it should do an axios request to login
+          }}>
           <RoundedInputBox
             icon={<AccountCircle color="inherit" />}
             value={username}
