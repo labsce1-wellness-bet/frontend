@@ -1,32 +1,15 @@
-// Package imports
-import React, { useState } from "react";
+import React from "react";
+import authReducer from "./lib/reducers/authReducer";
+import { AuthWrapper, BackgroundImage } from "./AuthStyles";
+import { LoginSection } from "./sections/LoginSection/LoginSection";
 
-// Custom Components
-import {
-  AuthWrapper,
-  BackgroundImage,
-  MainContent,
-  HeaderContent,
-  GetStartedForm,
-  FooterContent,
-  StyledLink,
-} from "./AuthStyles";
-import RoundedInputBox from "components/RoundedInputBox/RoundedInputBox";
-
-// Lib folder files
-import { Logo } from "./lib/assets/Logo";
 import KittySleepingSrc from "./lib/assets/kitty-sleeping.png";
 import base64KittySleeping from "./lib/base64Data/base64-kitty-sleeping";
-
-// Material UI Components
-import { AccountCircle, Lock } from "@material-ui/icons";
-import Fab from "@material-ui/core/Fab";
 
 export interface AuthProps {}
 
 const Auth: React.SFC<AuthProps> = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [authState, authDispatch] = authReducer();
   return (
     <AuthWrapper>
       <BackgroundImage
@@ -34,46 +17,7 @@ const Auth: React.SFC<AuthProps> = () => {
         base64={base64KittySleeping}
         src={KittySleepingSrc}
       />
-      <MainContent>
-        <HeaderContent>
-          <Logo height="34" width="61" fill="none" />
-          <h1 className="organization">Wellness Bet</h1>
-          <h2 className="category">Sleep</h2>
-        </HeaderContent>
-        <GetStartedForm>
-          <RoundedInputBox
-            icon={<AccountCircle color="inherit" />}
-            value={username}
-            type="text"
-            onChange={(e: any) => {
-              setUsername(e.target.value);
-            }}
-            placeholder={"Username"}
-            className="input-box"
-          />
-          <RoundedInputBox
-            icon={<Lock color="inherit" />}
-            value={password}
-            type="password"
-            onChange={(e: any) => {
-              setPassword(e.target.value);
-            }}
-            placeholder={"Password"}
-            className="input-box"
-          />
-          <Fab
-            className="submit-btn"
-            color="primary"
-            variant="extended"
-            aria-label="Get Started">
-            Get Started
-          </Fab>
-        </GetStartedForm>
-        <FooterContent>
-          <StyledLink to="/">Create Account</StyledLink>
-          <StyledLink to="/">Need Help?</StyledLink>
-        </FooterContent>
-      </MainContent>
+      <LoginSection />
     </AuthWrapper>
   );
 };
