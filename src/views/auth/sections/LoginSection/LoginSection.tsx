@@ -74,7 +74,9 @@ const LoginSection: React.SFC<Props> = ({ state, dispatch }) => {
           </Fab>
         </GetStartedForm>
         <FooterContent>
-          <StyledLink to="/">Create Account</StyledLink>
+          <StyledLink to={{ search: "?view=signup" }}>
+            Create Account
+          </StyledLink>
           <StyledLink to="/">Need Help?</StyledLink>
         </FooterContent>
       </LoginContent>
