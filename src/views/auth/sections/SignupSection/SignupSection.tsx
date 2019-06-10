@@ -7,6 +7,7 @@ import {
   FooterContent,
   StyledLink,
 } from "./SignupStyles";
+import UploadAvatarPhoto from "components/UploadAvatarPhoto/UploadAvatarPhoto";
 
 import RoundedInputBox from "components/RoundedInputBox/RoundedInputBox";
 import { AccountCircle, Lock, Email } from "@material-ui/icons";
@@ -74,6 +75,7 @@ const SignupSection: React.SFC<Props> = ({ state, dispatch }) => {
             placeholder={"Password"}
             className="input-box"
           />
+          <UploadAvatarPhoto state={""} dispatch={() => {}} />
           <Fab
             className="submit-btn"
             color="primary"

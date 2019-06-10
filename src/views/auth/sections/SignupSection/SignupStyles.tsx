@@ -23,7 +23,7 @@ const HeaderContent = styled.header`
 const CreateAccountForm = styled.form`
   display: flex;
   flex-direction: column;
-  align-items: stretch;
+  align-items: center;
   width: 100%;
   margin-bottom: 36px;
   & .input-box {
@@ -31,6 +31,7 @@ const CreateAccountForm = styled.form`
   }
   & .submit-btn {
     margin-top: 24px;
+    align-self: stretch;
   }
 `;
 const FooterContent = styled.footer`
