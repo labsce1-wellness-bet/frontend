@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { PhotoCircle } from "./UploadAvatarPhotoStyles";
+import { MaterialSimpleModal } from "components/MaterialSimpleModal/MaterialSimpleModal";
 export interface Photo {
   state: any;
   dispatch: Function;
 }
 
 const UploadAvatarPhoto: React.SFC<Photo> = ({ state, dispatch }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const fileSelectHandler = (e: any) => {
     const file = e.target.files[0];
 
@@ -23,7 +25,22 @@ const UploadAvatarPhoto: React.SFC<Photo> = ({ state, dispatch }) => {
       dispatch({ type: "UPLOADING_IMAGE_ERROR" });
     };
   };
-  return <PhotoCircle />;
+  return (
+    <>
+      <MaterialSimpleModal
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+        isOpen={isModalOpen}
+        setIsOpen={setIsModalOpen}>
+        <div />
+      </MaterialSimpleModal>
+      <PhotoCircle
+        onClick={() => {
+          setIsModalOpen(true);
+        }}
+      />
+    </>
+  );
 };
 
 export default UploadAvatarPhoto;
