@@ -17,7 +17,7 @@ const Auth: React.SFC<AuthProps> = () => {
         base64={base64KittySleeping}
         src={KittySleepingSrc}
       />
-      <LoginSection />
+      <LoginSection state={authState} dispatch={authDispatch} />
     </AuthWrapper>
   );
 };

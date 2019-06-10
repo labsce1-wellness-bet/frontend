@@ -1,18 +1,12 @@
 import { useReducer } from "react";
-
+import { AuthState } from "./auth-state.interface";
 interface Action {
   type: string;
   inputName: string;
   value: string;
   [key: string]: any;
 }
-interface State {
-  username: string;
-  password: string;
-  email: string;
-  isLoading: boolean;
-  hasError: boolean;
-}
+
 const initialState = {
   username: "",
   password: "",
@@ -21,7 +15,7 @@ const initialState = {
   hasError: false,
 };
 
-const authReducer = (state: State, action: Action) => {
+const authReducer = (state: AuthState, action: Action) => {
   switch (action.type) {
     case "SET_TEXT": {
       return {

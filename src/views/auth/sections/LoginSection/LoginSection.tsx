@@ -11,10 +11,14 @@ import { Logo } from "../../lib/assets/Logo";
 import RoundedInputBox from "components/RoundedInputBox/RoundedInputBox";
 import { AccountCircle, Lock } from "@material-ui/icons";
 import Fab from "@material-ui/core/Fab";
+import { AuthState } from "../../lib/reducers/auth-state.interface";
+export interface Props {
+  state: AuthState;
+  dispatch: Function;
+}
 
-export interface Props {}
-
-const LoginSection: React.SFC<Props> = ({}) => {
+const LoginSection: React.SFC<Props> = ({ state, dispatch }) => {
+  const { username, password } = state;
   return (
     <LoginWrapper>
       <MainContent>
@@ -26,20 +30,32 @@ const LoginSection: React.SFC<Props> = ({}) => {
         <GetStartedForm>
           <RoundedInputBox
             icon={<AccountCircle color="inherit" />}
-            // value={username}
+            value={username}
             type="text"
-            onChange={(e: any) => {
-              //   setUsername(e.target.value);
+            name="username"
+            onChange={(e: React.SyntheticEvent) => {
+              let target = e.target as HTMLInputElement;
+              dispatch({
+                type: "SET_TEXT",
+                inputName: target.name,
+                value: target.value,
+              });
             }}
             placeholder={"Username"}
             className="input-box"
           />
           <RoundedInputBox
             icon={<Lock color="inherit" />}
-            // value={password}
+            value={password}
             type="password"
-            onChange={(e: any) => {
-              //   setPassword(e.target.value);
+            name="password"
+            onChange={(e: React.SyntheticEvent) => {
+              let target = e.target as HTMLInputElement;
+              dispatch({
+                type: "SET_TEXT",
+                inputName: target.name,
+                value: target.value,
+              });
             }}
             placeholder={"Password"}
             className="input-box"
