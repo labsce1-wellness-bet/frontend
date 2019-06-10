@@ -12,6 +12,7 @@
     "@types/react-dom": "16.8.4",
     "@types/react-router-dom": "^4.3.3",
     "@types/styled-components": "^4.1.15",
+    "@types/victory": "^31.0.18",
     "array-unique": "^0.3.2",
     "auth0-js": "^9.10.4",
     "axios": "^0.19.0",
@@ -22,7 +23,8 @@
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1",
     "styled-components": "^4.2.0",
-    "typescript": "^3.4.5"
+    "typescript": "^3.4.5",
+    "victory": "^32.2.3"
   },
   "scripts": {
     "start": "react-scripts start",

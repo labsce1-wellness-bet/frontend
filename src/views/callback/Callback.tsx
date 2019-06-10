@@ -1,38 +1,46 @@
 import React from "react";
+/* import { VictoryPie } from "victory";*/
+import { VictoryChart } from "victory";
+import { VictoryGroup } from "victory";
+import { VictoryArea } from "victory";
 
 export interface HomeProps { }
 
-/* const fetchUserData = () => {
- *     axios
- * 	.get('https://wellness-bet-backend.herokuapp.com/users/1')
- * 	.then(res => {
- * 	    const user = res.data;
- * 	    this.set
- * 	})
- * 	.catch(err => console.log(err));
- * }*/
-
 const Callback: React.SFC<HomeProps> = () => {
-    /* constructor(props) {
-       super(props);
-       this.state = {
-       users: []
-       };
-     * }
-
-     * componentDidMount() {
-       axios
-       .get('https://wellness-bet-backend.herokuapp.com/users/1')
-       .then(res => {
-       const users = res.data;
-       this.setState({users})
-       })
-       .catch(err => console.log(err));
-     * }*/
     
     return <div>
-        Home
-        <h1>Callback page, you're logged in.</h1>
+	<VictoryChart width={400} height={400}>
+            <VictoryGroup
+		style={{
+		    data: { strokeWidth: 3, fillOpacity: 0.4 }
+		}}
+            >
+		<VictoryArea
+		    style={{
+			data: { fill: "cyan", stroke: "cyan" }
+		    }}
+		    data={[
+			{ x: 1, y: 2 },
+			{ x: 2, y: 3 },
+			{ x: 3, y: 5 },
+			{ x: 4, y: 4 },
+			{ x: 5, y: 7 }
+		    ]}
+		/>
+		<VictoryArea
+		    style={{
+			data: { fill: "magenta", stroke: "magenta" }
+		    }}
+		    data={[
+			{ x: 1, y: 3 },
+			{ x: 2, y: 2 },
+			{ x: 3, y: 6 },
+			{ x: 4, y: 2 },
+			{ x: 5, y: 6 }
+		    ]}
+		/>
+            </VictoryGroup>
+	</VictoryChart>
     </div>;
 };
 
