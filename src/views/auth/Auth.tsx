@@ -23,7 +23,7 @@ const Auth: React.SFC<AuthProps> = ({ location }) => {
         alt={""}
         base64={base64KittySleeping}
         src={KittySleepingSrc}
-        shouldBlurImage={params.get("view") === SIGNUP ? true : false}
+        should_blur_image={params.get("view") === SIGNUP ? "true" : "false"}
       />
       {params.get("view") === SIGNUP ? (
         <SignupSection state={authState} dispatch={authDispatch} />

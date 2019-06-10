@@ -16,8 +16,8 @@ const AuthWrapper = styled.div`
 // https://css-tricks.com/almanac/properties/f/filter/
 const BackgroundImage = styled(BlurImage)`
   filter: brightness(40%)
-    ${(props: { shouldBlurImage: boolean }) =>
-      props.shouldBlurImage ? "blur(20px)" : ""};
+    ${(props: { should_blur_image: string }) =>
+      props.should_blur_image === "true" ? "blur(20px)" : ""};
   /* Set up positioning */
   /* Set rules to fill background */
   min-height: 100%;
