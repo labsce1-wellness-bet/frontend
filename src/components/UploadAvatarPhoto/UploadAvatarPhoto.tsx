@@ -1,3 +1,4 @@
+import React from "react";
 import { PhotoCircle } from "./UploadAvatarPhotoStyles";
 export interface Photo {
   state: any;
@@ -22,7 +23,7 @@ const UploadAvatarPhoto: React.SFC<Photo> = ({ state, dispatch }) => {
       dispatch({ type: "UPLOADING_IMAGE_ERROR" });
     };
   };
-  return <PhotoCircle>Add Photo</PhotoCircle>;
+  return <PhotoCircle />;
 };
 
 export default UploadAvatarPhoto;
