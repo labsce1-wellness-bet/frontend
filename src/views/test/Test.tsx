@@ -4,7 +4,7 @@ import {
   uploadWidgetReducer,
 } from "components/UploadImageWidget/index";
 
-import UploadAvatarPhoto from "components/UploadAvatarPhoto/UploadAvatarPhoto";
+import { UploadAvatarPhoto } from "components/UploadAvatarPhoto/index";
 import uploadToCloudinaryReducer from "lib/utils/uploadImageToCloudinary/uploadToCloudinaryReducer";
 import uploadImageToCloudinary from "lib/utils/uploadImageToCloudinary/uploadImageToCloudinary";
 

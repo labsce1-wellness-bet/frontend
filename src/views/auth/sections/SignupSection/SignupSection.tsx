@@ -7,7 +7,7 @@ import {
   FooterContent,
   StyledLink,
 } from "./SignupStyles";
-import UploadAvatarPhoto from "components/UploadAvatarPhoto/UploadAvatarPhoto";
+import { UploadAvatarPhoto } from "components/UploadAvatarPhoto/index";
 
 import RoundedInputBox from "components/RoundedInputBox/RoundedInputBox";
 import { AccountCircle, Lock, Email } from "@material-ui/icons";
