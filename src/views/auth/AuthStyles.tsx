@@ -9,7 +9,7 @@ const AuthWrapper = styled.div`
   height: 100vh;
   color: white;
   overflow: hidden;
-  @media screen and (max-height: 475px) {
+  @media screen and (max-height: 550px) {
     overflow-y: scroll;
   }
 `;
