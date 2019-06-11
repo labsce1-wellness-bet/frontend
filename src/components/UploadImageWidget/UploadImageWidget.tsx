@@ -16,7 +16,7 @@ interface Props {
   state: UploadWidgetState;
 }
 
-const UploadWidgetImageProps: React.SFC<Props> = ({
+const UploadImageWidget: React.SFC<Props> = ({
   startingInstructions,
   afterUploadInstructions,
   dispatch,
@@ -70,4 +70,4 @@ const UploadWidgetImageProps: React.SFC<Props> = ({
   );
 };
 
-export default UploadWidgetImageProps;
+export { UploadImageWidget };
