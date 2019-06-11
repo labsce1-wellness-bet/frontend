@@ -1,4 +1,4 @@
-import React, { useState, useRef, RefObject } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   PhotoCircle,
   ModalContent,
@@ -6,83 +6,110 @@ import {
   Canvas,
 } from "./UploadAvatarPhotoStyles";
 import { MaterialSimpleModal } from "components/MaterialSimpleModal/MaterialSimpleModal";
-import { Divider, Button } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 export interface Photo {
   state: any;
   dispatch: Function;
 }
 
 const UploadAvatarPhoto: React.SFC<Photo> = ({ state, dispatch }) => {
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
+  const {
+    //Take Picture Mode
+    takePictureModeOn,
+  } = state;
 
-  const fileSelectHandler = (e: any) => {
-    const file = e.target.files[0];
+  useEffect(() => {
+    const startVideo = () => {
+      if (navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices
+          .getUserMedia({ video: true })
+          .then(function(stream) {
+            const { current } = videoRef;
+            const video: any = current as unknown;
+            video.srcObject = stream;
+            video.onloadedmetadata = function() {
+              video.play();
+            };
+          })
+          .catch(function(err: Error) {
+            console.log(err);
+            dispatch({ type: "RESET_STATE" });
+          });
+      }
+    };
+    if (takePictureModeOn) {
+      startVideo();
+    }
+  }, [takePictureModeOn, dispatch]);
 
-    const reader = new FileReader();
-    const url = reader.readAsDataURL(file);
-
-    reader.onloadstart = () => {
-      dispatch({ type: "UPLOADING_IMAGE" });
-    };
-    reader.onloadend = () => {
-      dispatch({ type: "UPLOADED_IMAGE", base64ImageData: reader.result });
-      console.log(url);
-    };
-    reader.onerror = () => {
-      dispatch({ type: "UPLOADING_IMAGE_ERROR" });
-    };
-  };
-  const startVideo = (e: any) => {
-    if (navigator.mediaDevices.getUserMedia) {
-      navigator.mediaDevices
-        .getUserMedia({ video: true })
-        .then(function(stream) {
-          const { current } = videoRef;
-          const video: any = current as unknown;
-          video.srcObject = stream;
-          video.onloadedmetadata = function() {
-            video.play();
-          };
-        })
-        .catch(function(err: Error) {
-          console.log(err);
-        });
+  const stopVideo = () => {
+    //@ts-ignore
+    if (videoRef.current && videoRef.current.srcObject) {
+      (videoRef.current as any).srcObject
+        .getVideoTracks()
+        .forEach((track: any) => track.stop());
     }
   };
   return (
     <>
       <MaterialSimpleModal
-        aria-labelledby="simple-modal-title"
-        aria-describedby="simple-modal-description"
+        aria-labelledby="upload photo modal"
+        aria-describedby="upload a photo from device or take a picture"
         open={isModalOpen}
-        onClose={() => setIsModalOpen(false)}>
+        onClose={() => {
+          setIsModalOpen(false);
+          stopVideo();
+          dispatch({ type: "RESET_STATE" });
+        }}>
         <ModalContent>
-          <Divider />
-          <Button onClick={startVideo} variant="contained" color="primary">
-            Take Picture
-          </Button>
-          <Video muted id="videoElement" ref={videoRef} />
-          <Button
-            onClick={() => {
-              const canvas = canvasRef.current as any;
-              canvas
-                .getContext("2d")
-                .drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
-            }}>
-            Take Snapshot
-          </Button>
-          <Canvas ref={canvasRef} />
-          <Button
-            onClick={() => {
-              //@ts-ignore
-              videoRef.current.srcObject
-                .getVideoTracks()
-                .forEach((track: any) => track.stop());
-            }}>
-            Stop video
-          </Button>
+          {!takePictureModeOn && (
+            <Button
+              onClick={() => {
+                dispatch({ type: "TAKE_PICTURE_MODE_ON" });
+              }}
+              variant="contained"
+              color="primary">
+              Take Picture
+            </Button>
+          )}
+          {takePictureModeOn && (
+            <>
+              <Video muted id="videoElement" ref={videoRef} />
+              <Button
+                variant="contained"
+                onClick={() => {
+                  (canvasRef.current as any)
+                    .getContext("2d")
+                    .drawImage(
+                      videoRef.current,
+                      0,
+                      0,
+                      (canvasRef.current as any).width,
+                      (canvasRef.current as any).height,
+                    );
+                  dispatch({
+                    type: "UPLOADED_IMAGE",
+                    base64ImageData: (canvasRef.current as any).toDataURL(),
+                  });
+                  // console.log((canvasRef.current as any).toDataURL());
+                }}>
+                Take Snapshot
+              </Button>
+              <Canvas ref={canvasRef} />
+              <Button
+                variant="contained"
+                onClick={() => {
+                  stopVideo();
+                  setIsModalOpen(false);
+                  dispatch({ type: "RESET_MODAL_STATE" });
+                }}>
+                Done
+              </Button>
+            </>
+          )}
         </ModalContent>
       </MaterialSimpleModal>
       <PhotoCircle

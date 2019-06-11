@@ -36,6 +36,5 @@ const Video = styled.video`
 const Canvas = styled.canvas`
   height: 200px;
   width: 200px;
-  border-radius: 50%;
 `;
 export { PhotoCircle, ModalContent, Video, Canvas };
