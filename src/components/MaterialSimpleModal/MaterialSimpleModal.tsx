@@ -23,9 +23,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 export interface Props {
-  setIsOpen: Function;
-  isOpen: boolean;
-  children: React.ReactElement;
+  open: boolean;
   [key: string]: any;
 }
 
@@ -34,10 +32,7 @@ const MaterialSimpleModal: React.SFC<Props> = props => {
   const classes = useStyles();
 
   return (
-    <Modal
-      open={props.isOpen}
-      onClose={() => props.setIsOpen(false)}
-      {...props}>
+    <Modal {...props}>
       <div style={modalStyle} className={classes.paper}>
         {props.children}
       </div>

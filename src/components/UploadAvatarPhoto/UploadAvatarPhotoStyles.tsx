@@ -24,5 +24,18 @@ const PhotoCircle = styled.div`
     width: 100%;
   }
 `;
-
-export { PhotoCircle };
+const ModalContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+const Video = styled.video`
+  width: 200px;
+  height: 200px;
+`;
+const Canvas = styled.canvas`
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+`;
+export { PhotoCircle, ModalContent, Video, Canvas };
