@@ -15,4 +15,34 @@ export default class Auth {
 }
 
 
-// redirectUri: "https://wellness-bet.netlify.com/callback",
+/* 
+ * function create(user, callback) {
+ *     const mysql = require('mysql');
+ *     const bcrypt = require('bcrypt');
+ * 
+ *     const connection = mysql.createConnection({
+ * 	host: configuration.HOST,
+ * 	user: configuration.USER,
+ * 	password: configuration.PASSWORD,
+ * 	database: configuration.DATABASE
+ *     });
+ * 
+ *     connection.connect();
+ * 
+ *     const query = 'INSERT INTO user SET ?';
+ * 
+ *     bcrypt.hash(user.password, 10, function(err, hash) {
+ * 	if (err) return callback(err);
+ * 
+ * 	const insert = {
+ * 	    password: hash,
+ * 	    email: user.email
+ * 	};
+ * 
+ * 	connection.query(query, insert, function(err, results) {
+ * 	    if (err) return callback(err);
+ * 	    if (results.length === 0) return callback();
+ * 	    callback(null);
+ * 	});
+ *     });
+ * }*/

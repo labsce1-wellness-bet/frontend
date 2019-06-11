@@ -1,10 +1,15 @@
 import React from "react";
+import React, { useState } from "react";
 /* import { VictoryPie } from "victory";*/
 import { VictoryChart } from "victory";
 import { VictoryGroup } from "victory";
 import { VictoryArea } from "victory";
 
 export interface HomeProps { }
+
+function Chart() {
+    
+}
 
 const Callback: React.SFC<HomeProps> = () => {
     
