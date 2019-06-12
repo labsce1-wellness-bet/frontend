@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { Route } from "react-router-dom";
+
 import { DashboardStart } from "./sections/dashboard-start/DashboardStart";
+import { DashboardJoinGroup } from "./sections/dashboard-join-group/DashboardJoinGroup";
+
 import { DashboardWrapper } from "./DashboardStyles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -35,7 +38,12 @@ const Dashboard: React.SFC<Props> = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   return (
     <DashboardWrapper>
-      <Route path="/dashboard/start" component={DashboardStart} />
+      <Route exact path="/dashboard/start" component={DashboardStart} />
+      <Route
+        exact
+        path="/dashboard/join-group"
+        component={DashboardJoinGroup}
+      />
 
       {/* Every page for dashboard has the below components */}
       <SwipeableDrawer

@@ -8,7 +8,7 @@ const DashboardStart: React.SFC<Props> = () => {
   return (
     <DashboardStartWrapper>
       <Content>
-        <Link to="#">
+        <Link to="/dashboard/new-group">
           <Button
             variant="outlined"
             color="primary"
@@ -16,7 +16,7 @@ const DashboardStart: React.SFC<Props> = () => {
             Create New Group
           </Button>
         </Link>
-        <Link to="#">
+        <Link to="/dashboard/join-group">
           <Button
             variant="outlined"
             color="primary"
