@@ -15,8 +15,8 @@ interface Props {
   dispatch: Function;
   state: UploadWidgetState;
 }
-
-const UploadWidgetImageProps: React.SFC<Props> = ({
+// https://developers.google.com/web/fundamentals/media/capturing-images/#drag_and_drop
+const UploadImageWidget: React.SFC<Props> = ({
   startingInstructions,
   afterUploadInstructions,
   dispatch,
@@ -70,4 +70,4 @@ const UploadWidgetImageProps: React.SFC<Props> = ({
   );
 };
 
-export default UploadWidgetImageProps;
+export { UploadImageWidget };
