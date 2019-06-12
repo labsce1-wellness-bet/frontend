@@ -1,7 +1,10 @@
 import React from "react";
-import UploadImageWidget from "components/UploadImageWidget/UploadImageWidget";
-import uploadWidgetReducer from "components/UploadImageWidget/uploadWidgetReducer";
+import {
+  UploadImageWidget,
+  uploadWidgetReducer,
+} from "components/UploadImageWidget/index";
 
+import { UploadAvatarPhoto } from "components/UploadAvatarPhoto/index";
 import uploadToCloudinaryReducer from "lib/utils/uploadImageToCloudinary/uploadToCloudinaryReducer";
 import uploadImageToCloudinary from "lib/utils/uploadImageToCloudinary/uploadImageToCloudinary";
 
@@ -23,6 +26,7 @@ const Test: React.SFC<Props> = () => {
         state={uwState}
         dispatch={uwDispatch}
       />
+      <UploadAvatarPhoto state={""} dispatch={() => {}} />
       <button
         onClick={async () => {
           const data = await uploadImageToCloudinary(

@@ -8,7 +8,29 @@ import { VictoryArea } from "victory";
 export interface HomeProps { }
 
 function Chart() {
-    
+    const [todos, setTodos] = useState([
+	{
+	    text: 'Learn about React',
+	    isCompleted: false
+	},
+	{
+	    text: 'todo2',
+	    isCompleted: false
+	},
+	{
+	    text: 'Build app',
+	    isCompleted: false
+	}
+    ]);
+    return (
+        <div className="app">
+            <div className="todo-list">
+		{todos.map((todo, index) => (
+                    <Todo key={index} index="{index} todo={todo}" />
+		))}
+	    </div>
+	</div>
+    )
 }
 
 const Callback: React.SFC<HomeProps> = () => {
