@@ -16,7 +16,6 @@ interface Props {}
 const DashboardAdmin: React.SFC<Props> = () => {
   //@ts-ignore
   const classes = useStyles();
-  console.log(classes);
   const INFO = "INFO";
   const PENDING = "PENDING";
   const APPROVED = "APPROVED";
