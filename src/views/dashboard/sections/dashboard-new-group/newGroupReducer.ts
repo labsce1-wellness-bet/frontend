@@ -7,8 +7,6 @@ interface Action {
 interface State {}
 const initialState = {
   groupName: "",
-  messageGroup: "",
-  joinCode: "",
 };
 const newGroupReducer = (state: State, action: Action) => {
   switch (action.type) {

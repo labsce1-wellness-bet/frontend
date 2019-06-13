@@ -7,7 +7,7 @@ export interface Props {}
 
 const DashboardNewGroup: React.SFC<Props> = () => {
   const [state, dispatch] = newGroupReducer();
-  const { groupName, messageGroup, joinCode } = state;
+  const { groupName } = state;
   return (
     <DashboardNewGroupWrapper>
       <Form>
@@ -23,33 +23,6 @@ const DashboardNewGroup: React.SFC<Props> = () => {
           margin="normal"
           variant="filled"
           required={true}
-        />
-        <TextField
-          id="filled-join-code"
-          label="Join Code"
-          name="joinCode"
-          value={joinCode}
-          onChange={(e: any) => {
-            const { name, value } = e.target;
-            dispatch({ type: "SET_TEXT", inputName: name, value: value });
-          }}
-          margin="normal"
-          variant="filled"
-          required={true}
-        />
-        <TextField
-          id="filled-message-group"
-          label="Message to Group"
-          name="messageGroup"
-          value={messageGroup}
-          onChange={(e: any) => {
-            const { name, value } = e.target;
-            dispatch({ type: "SET_TEXT", inputName: name, value: value });
-          }}
-          margin="normal"
-          variant="filled"
-          multiline={true}
-          rows={3}
         />
         <Button variant="contained" color="primary">
           Create New Group
