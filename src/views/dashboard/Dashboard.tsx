@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Route } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 
 import { DashboardStart } from "./sections/dashboard-start/DashboardStart";
 import { DashboardJoinGroup } from "./sections/dashboard-join-group/DashboardJoinGroup";
@@ -66,18 +66,22 @@ const Dashboard: React.SFC<Props> = () => {
           </header>
           <Divider />
           <List>
-            <ListItem button>
-              <ListItemIcon>
-                <Group />
-              </ListItemIcon>
-              <ListItemText>Groups</ListItemText>
-            </ListItem>
-            <ListItem button>
-              <ListItemIcon>
-                <Settings />
-              </ListItemIcon>
-              <ListItemText>Settings</ListItemText>
-            </ListItem>
+            <Link to="/dashboard/groups">
+              <ListItem button>
+                <ListItemIcon>
+                  <Group />
+                </ListItemIcon>
+                <ListItemText>Groups</ListItemText>
+              </ListItem>
+            </Link>
+            <Link to="/dashboard/settings">
+              <ListItem button>
+                <ListItemIcon>
+                  <Settings />
+                </ListItemIcon>
+                <ListItemText>Settings</ListItemText>
+              </ListItem>
+            </Link>
           </List>
         </div>
       </SwipeableDrawer>
@@ -106,18 +110,22 @@ const Dashboard: React.SFC<Props> = () => {
         onClose={setIsPlusDrawerOpen.bind(null, false)}>
         <div className={classes.fullList}>
           <List>
-            <ListItem button>
-              <ListItemIcon>
-                <AddIcon />
-              </ListItemIcon>
-              <ListItemText>Create New Group</ListItemText>
-            </ListItem>
-            <ListItem button>
-              <ListItemIcon>
-                <AddIcon />
-              </ListItemIcon>
-              <ListItemText>Join With Code</ListItemText>
-            </ListItem>
+            <Link to="/dashboard/new-group">
+              <ListItem button>
+                <ListItemIcon>
+                  <AddIcon />
+                </ListItemIcon>
+                <ListItemText>Create New Group</ListItemText>
+              </ListItem>
+            </Link>
+            <Link to="/dashboard/join-group">
+              <ListItem button>
+                <ListItemIcon>
+                  <AddIcon />
+                </ListItemIcon>
+                <ListItemText>Join With Code</ListItemText>
+              </ListItem>
+            </Link>
             <ListItem button>
               <ListItemIcon>
                 <AddIcon />
