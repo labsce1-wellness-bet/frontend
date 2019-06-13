@@ -46,7 +46,7 @@ const Dashboard: React.SFC<Props> = () => {
   const [isPlusDrawerOpen, setIsPlusDrawerOpen] = useState(false);
   return (
     <DashboardWrapper>
-      <Route exact path="/dashboard/start" component={DashboardStart} />
+      <Route exact path="/dashboard" component={DashboardStart} />
       <Route
         exact
         path="/dashboard/join-group"
