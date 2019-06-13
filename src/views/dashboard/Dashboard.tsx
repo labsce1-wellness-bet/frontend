@@ -4,6 +4,7 @@ import { Route, Link } from "react-router-dom";
 import { DashboardStart } from "./sections/dashboard-start/DashboardStart";
 import { DashboardJoinGroup } from "./sections/dashboard-join-group/DashboardJoinGroup";
 import { DashboardNewGroup } from "./sections/dashboard-new-group/DashboardNewGroup";
+import { DashboardAdmin } from "./sections/dashboard-admin/DashboardAdmin";
 
 import { DashboardWrapper } from "./DashboardStyles";
 import AppBar from "@material-ui/core/AppBar";
@@ -52,6 +53,7 @@ const Dashboard: React.SFC<Props> = () => {
         component={DashboardJoinGroup}
       />
       <Route exact path="/dashboard/new-group" component={DashboardNewGroup} />
+      <Route exact path="/dashboard/admin" component={DashboardAdmin} />
       {/* Every page for dashboard has the below components */}
       <SwipeableDrawer
         anchor="left"
