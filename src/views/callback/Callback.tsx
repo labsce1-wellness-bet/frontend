@@ -1,5 +1,5 @@
 import React from "react";
-import React, { useState } from "react";
+// import React, { useState } from "react";
 /* import { VictoryPie } from "victory";*/
 import { VictoryChart } from "victory";
 import { VictoryGroup } from "victory";
@@ -7,31 +7,24 @@ import { VictoryArea } from "victory";
 
 export interface HomeProps { }
 
-function Chart() {
-    const [todos, setTodos] = useState([
-	{
-	    text: 'Learn about React',
-	    isCompleted: false
-	},
-	{
-	    text: 'todo2',
-	    isCompleted: false
-	},
-	{
-	    text: 'Build app',
-	    isCompleted: false
-	}
-    ]);
-    return (
-        <div className="app">
-            <div className="todo-list">
-		{todos.map((todo, index) => (
-                    <Todo key={index} index="{index} todo={todo}" />
-		))}
-	    </div>
-	</div>
-    )
-}
+/* 
+ * function Chart() {
+ *     const [todos, setTodos] = useState([
+ *  	{
+ *  	    text: 'Learn about React',
+ *  	    isCompleted: false
+ *  	},
+ *  	{
+ *  	    text: 'todo2',
+ *  	    isCompleted: false
+ *  	},
+ *  	{
+ *  	    text: 'Build app',
+ *  	    isCompleted: false
+ *  	}
+ *     ]);*/
+
+
 
 const Callback: React.SFC<HomeProps> = () => {
     

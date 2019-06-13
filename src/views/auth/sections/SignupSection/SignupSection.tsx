@@ -9,7 +9,7 @@ import {
 } from "./SignupStyles";
 
 import RoundedInputBox from "components/RoundedInputBox/RoundedInputBox";
-import { AccountCircle, Lock, Email } from "@material-ui/icons";
+import { Lock, Email } from "@material-ui/icons";
 import Fab from "@material-ui/core/Fab";
 import { AuthState } from "../../lib/reducers/auth-state.interface";
 export interface Props {
@@ -18,7 +18,7 @@ export interface Props {
 }
 
 const SignupSection: React.SFC<Props> = ({ state, dispatch }) => {
-  const { username, email, password } = state;
+  const { email, password } = state;
   return (
     <SignupWrapper>
       <SignupContent>
@@ -26,22 +26,6 @@ const SignupSection: React.SFC<Props> = ({ state, dispatch }) => {
           <h2 className="title">Create Account</h2>
         </HeaderContent>
         <CreateAccountForm>
-          <RoundedInputBox
-            icon={<AccountCircle color="inherit" />}
-            value={username}
-            type="text"
-            name="username"
-            onChange={(e: React.SyntheticEvent) => {
-              let target = e.target as HTMLInputElement;
-              dispatch({
-                type: "SET_TEXT",
-                inputName: target.name,
-                value: target.value,
-              });
-            }}
-            placeholder={"Username"}
-            className="input-box"
-          />
           <RoundedInputBox
             icon={<Email color="inherit" />}
             value={email}
@@ -91,3 +75,20 @@ const SignupSection: React.SFC<Props> = ({ state, dispatch }) => {
 };
 
 export { SignupSection };
+
+/* <RoundedInputBox
+ * icon={<AccountCircle color="inherit" />}
+ * value={username}
+ * type="text"
+ * name="username"
+ * onChange={(e: React.SyntheticEvent) => {
+ *     let target = e.target as HTMLInputElement;
+ *     dispatch({
+ *         type: "SET_TEXT",
+ *         inputName: target.name,
+ *         value: target.value,
+ *     });
+ * }}
+ * placeholder={"Username"}
+ * className="input-box"
+ * />*/
