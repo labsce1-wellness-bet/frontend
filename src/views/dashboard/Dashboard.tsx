@@ -6,6 +6,7 @@ import { DashboardJoinGroup } from "./sections/dashboard-join-group/DashboardJoi
 import { DashboardNewGroup } from "./sections/dashboard-new-group/DashboardNewGroup";
 import { DashboardAdmin } from "./sections/dashboard-admin/DashboardAdmin";
 import { DashboardGroups } from "./sections/dashboard-groups/DashboardGroups";
+import { DashboardCompetitions } from "./sections/dashboard-competitions/DashboardCompetitions";
 
 import { DashboardWrapper } from "./DashboardStyles";
 import AppBar from "@material-ui/core/AppBar";
@@ -49,6 +50,11 @@ const Dashboard: React.SFC<Props> = () => {
     <DashboardWrapper>
       <Route exact path="/dashboard" component={DashboardStart} />
       <Route exact path="/dashboard/groups" component={DashboardGroups} />
+      <Route
+        exact
+        path="/dashboard/competitions"
+        component={DashboardCompetitions}
+      />
       <Route
         exact
         path="/dashboard/join-group"
