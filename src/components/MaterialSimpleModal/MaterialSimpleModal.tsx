@@ -24,6 +24,7 @@ const useStyles = makeStyles(theme => ({
 }));
 export interface Props {
   open: boolean;
+
   [key: string]: any;
 }
 
