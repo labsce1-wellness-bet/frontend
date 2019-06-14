@@ -5,13 +5,14 @@ export interface AuthFitbitProps {
 
 const AuthFitbit: React.SFC<AuthFitbitProps> = props => {
   console.log("AuthFitbit", props);
-  const state = `userId=${props.userId}`;
-  const url: string = "http://localhost:3000/fitbit/connecting";
-  const encodedUrl: string = encodeURI(url);
-
+  const passState: string = `userId=${props.userId}`;
+  let redirectUri: string = process.env.REACT_APP_FITBIT_REDIRECT_URI || "";
+  const encodedUri: string = encodeURI(redirectUri);
+  const fitbitClientId: string | undefined =
+    process.env.REACT_APP_FITBIT_CLIENT_ID;
   return (
     <a
-      href={`https://www.fitbit.com/oauth2/authorize?response_type=code&client_id=22DR4B&redirect_uri=${encodedUrl}&scope=sleep&state=${state}`}>
+      href={`https://www.fitbit.com/oauth2/authorize?response_type=code&client_id=${fitbitClientId}&redirect_uri=${encodedUri}&scope=sleep&state=${passState}`}>
       Connect Fitbit
     </a>
   );
