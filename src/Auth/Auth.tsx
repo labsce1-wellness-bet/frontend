@@ -1,15 +1,18 @@
 import auth0 from "auth0-js";
 
 export default class Auth {
-  auth0 = new auth0.WebAuth({
-    domain: "akshay-gadkari.auth0.com",
-    clientID: "fX2Ov3PrG67snp7CsUrUFcFE8RN5aglD",
-    redirectUri: "https://wellness-bet-frontend.herokuapp.com/callback",
-    responseType: "token id_token",
-    scope: "openid",
-  });
+    auth0 = new auth0.WebAuth({
+	domain: "akshay-gadkari.auth0.com",
+	clientID: "fX2Ov3PrG67snp7CsUrUFcFE8RN5aglD",
+	redirectUri: process.env.REACT_APP_FRONTEND_REDIRECT,
+	responseType: "token id_token",
+	scope: "openid",
+    });
 
-  login() {
-    this.auth0.authorize();
-  }
+    login() {
+	this.auth0.authorize();
+    }
 }
+
+
+// redirectUri: "https://wellness-bet.netlify.com/callback",
