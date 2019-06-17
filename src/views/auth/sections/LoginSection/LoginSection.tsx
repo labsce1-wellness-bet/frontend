@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import {
     LoginWrapper,
     LoginContent,
@@ -12,13 +12,26 @@ import RoundedInputBox from "components/RoundedInputBox/RoundedInputBox";
 import { Lock, Email } from "@material-ui/icons";
 import Fab from "@material-ui/core/Fab";
 import { AuthState } from "../../lib/reducers/auth-state.interface";
-export interface Props {
-    state: AuthState;
-    dispatch: Function;
-}
+import Auth from "Auth/Auth.js";
+import auth0 from "auth0-js";
 
-const LoginSection: React.SFC<Props> = ({ state, dispatch }) => {
-    const { email, password } = state;
+/* export interface Props {
+ *     state: AuthState;
+ *     dispatch: Function;
+ * }*/
+
+const LoginSection = () => {
+    const [values, setValues] = useState({
+	email: "",
+	password: ""
+    });
+    const auth0 = new Auth();
+    const setText = (e: any) => {
+	setValues({ ...values, [e.target.name]: e.target.value });
+    };
+    const onLogin = () => {
+	auth0.login(values);
+    };
     return (
 	<LoginWrapper>
 	    <LoginContent>
@@ -29,41 +42,27 @@ const LoginSection: React.SFC<Props> = ({ state, dispatch }) => {
 		</HeaderContent>
 		{/* TODO: Form validation */}
 		<GetStartedForm
-		    onSubmit={(e: React.SyntheticEvent) => {
+		    onSubmit={(e:any) => {
 			    e.preventDefault();
-			    //TODO: When submitting it should do an axios request to login
+			    onLogin();
 		    }}>
 		    <RoundedInputBox
-			icon={<Email color="inherit" />}
-			value={email}
-			type="text"
-			name="email"
-			onChange={(e: React.SyntheticEvent) => {
-				let target = e.target as HTMLInputElement;
-				dispatch({
-				    type: "SET_TEXT",
-				    inputName: target.name,
-				    value: target.value,
-				});
-			}}
-			placeholder={"Email"}
-			className="input-box"
+		    icon={<Email color="inherit" />}
+		    value={values.email}
+		    type="text"
+		    name="email"
+		    onChange={setText}
+		    placeholder={"Email"}
+		    className="input-box"
 		    />
 		    <RoundedInputBox
-			icon={<Lock color="inherit" />}
-			value={password}
-			type="password"
-			name="password"
-			onChange={(e: React.SyntheticEvent) => {
-				let target = e.target as HTMLInputElement;
-				dispatch({
-				    type: "SET_TEXT",
-				    inputName: target.name,
-				    value: target.value,
-				});
-			}}
-			placeholder={"Password"}
-			className="input-box"
+		    icon={<Lock color="inherit" />}
+		    value={values.password}
+		    type="password"
+		    name="password"
+		    onChange={setText}
+		    placeholder={"Password"}
+		    className="input-box"
 		    />
 		    <Fab
 			className="submit-btn"
