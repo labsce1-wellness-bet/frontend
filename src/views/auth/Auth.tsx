@@ -26,9 +26,9 @@ const Auth: React.SFC<AuthProps> = ({ location }) => {
         should_blur_image={params.get("view") === SIGNUP ? "true" : "false"}
       />
       {params.get("view") === SIGNUP ? (
-        <SignupSection state={authState} dispatch={authDispatch} />
+        <SignupSection />
       ) : (
-        <LoginSection state={authState} dispatch={authDispatch} />
+        <LoginSection />
       )}
     </AuthWrapper>
   );
