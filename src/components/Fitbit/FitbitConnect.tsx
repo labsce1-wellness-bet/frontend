@@ -6,6 +6,13 @@ interface FitbitConnectProps {
   search: string;
 }
 
+interface FitbitAuth {
+  fitbitAccess: String;
+  fitbitRefresh: String;
+  access_token: String;
+  refresh_token: String;
+}
+
 const FitbitConnect: React.SFC<FitbitConnectProps> = props => {
   const authCode: string = props.location.search.match(/(?<==).+?(?=&)/)[0];
   const userId: number = props.location.search.match(/(?<=userId)(.*)/)[0];
@@ -27,11 +34,11 @@ const FitbitConnect: React.SFC<FitbitConnectProps> = props => {
       if (request.status >= 200 && request.status < 400) {
         const data = JSON.parse(request.response) as Response;
         console.log(data);
-        storeFitbit(
-          "PUT",
-          `${process.env.REACT_APP_BACKEND_URL}api/user/${userId}/fitbit`,
-          data,
-        );
+        storeFitbit({
+          method: "PUT",
+          url: `${process.env.REACT_APP_BACKEND_URL}api/user/${userId}/fitbit`,
+          content: data,
+        });
         callback && callback(data);
       } else {
       }
@@ -53,13 +60,19 @@ const FitbitConnect: React.SFC<FitbitConnectProps> = props => {
   }
 
   // Function to PUT Access and Refresh token on backed end after sending auth code to Fitbit.
-  function storeFitbit<Request, Response>(
-    method: "PUT",
-    url: string,
-    content?: Request,
-    callback?: (response: Response) => void,
-    errorCallback?: (err: any) => void,
-  ) {
+  function storeFitbit<Request, Response>({
+    method,
+    url,
+    content,
+    callback,
+    errorCallback,
+  }: {
+    method: "PUT";
+    url: string;
+    content?: Request;
+    callback?: (response: Response) => void;
+    errorCallback?: (err: any) => void;
+  }) {
     const request = new XMLHttpRequest();
     request.open(method, url, true);
     request.onload = () => {
@@ -78,6 +91,8 @@ const FitbitConnect: React.SFC<FitbitConnectProps> = props => {
     }
 
     if (content) {
+      console.log("PUT Content", content);
+      content.fitbitAccess = content.access_token;
       request.send({
         content,
       });
