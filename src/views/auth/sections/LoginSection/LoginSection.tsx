@@ -13,7 +13,7 @@ import { Lock, Email } from "@material-ui/icons";
 import Fab from "@material-ui/core/Fab";
 import { AuthState } from "../../lib/reducers/auth-state.interface";
 import Auth from "Auth/Auth.js";
-import auth0 from "auth0-js";
+//import auth0 from "auth0-js";
 
 /* export interface Props {
  *     state: AuthState;
@@ -21,6 +21,7 @@ import auth0 from "auth0-js";
  * }*/
 
 const LoginSection = () => {
+    console.log("something");
     const [values, setValues] = useState({
 	email: "",
 	password: ""
@@ -30,6 +31,7 @@ const LoginSection = () => {
 	setValues({ ...values, [e.target.name]: e.target.value });
     };
     const onLogin = () => {
+	console.log("on login function");
 	auth0.login(values);
     };
     return (
@@ -68,7 +70,8 @@ const LoginSection = () => {
 			className="submit-btn"
 			color="primary"
 			variant="extended"
-			aria-label="Get Started">
+			aria-label="Get Started"
+			type="submit">
 			Login
 		    </Fab>
 		</GetStartedForm>
