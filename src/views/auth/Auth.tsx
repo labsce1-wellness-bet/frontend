@@ -1,5 +1,5 @@
 import React from "react";
-import authReducer from "./lib/reducers/authReducer";
+//import authReducer from "./lib/reducers/authReducer";
 import { AuthWrapper, BackgroundImage } from "./AuthStyles";
 import { LoginSection } from "./sections/LoginSection/LoginSection";
 import { SignupSection } from "./sections/SignupSection/SignupSection";
@@ -15,7 +15,6 @@ export interface AuthProps {
 
 const Auth: React.SFC<AuthProps> = ({ location }) => {
   let params = new URLSearchParams(location.search);
-  const [authState, authDispatch] = authReducer();
   const SIGNUP = "signup";
   return (
     <AuthWrapper>
