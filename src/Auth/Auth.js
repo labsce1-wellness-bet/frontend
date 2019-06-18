@@ -36,34 +36,13 @@ export default class Auth {
 	    }
 	);
     }
-    /* login(loginParams, successCb, errorCb) {
-       console.log("logging in");
-       const authResult = this.auth0.login(
-       {
-       ...loginParams,
-       //realm: "wellness-bet-backend"
-       realm: "wellness-bet-backend"
-       },
-       err => {
-       if (err) {
-       console.log("error", err);
-       if (errorCb) {
-       errorCb();
-       }
-       }
-       if (successCb) {
-       console.log("success");
-       successCb();
-       }
-       }
-       );
-       console.log("authResult", authResult);
-     * }*/
     login(loginParams, successCb, errorCb) {
 	this.auth0.login(
 	    {
 		...loginParams,
-		realm: "wellness-bet-backend"
+		realm: "wellness-bet-backend",
+		//audience: "https://wellness-bet-api.com"
+		audience: "https://akshay-gadkari.auth0.com/api/v2/"
 	    },
 	    (err, authResult) => {
 		if (err) {
@@ -97,6 +76,8 @@ export default class Auth {
     }
 }
 
+
+// COMMENTS ARE FOR THE DATABASE ACCESS IN AUTH0 SETTINGS
 /* CREATE USER
  * function create(user, callback) {
  *     const mysql = require('mysql');
