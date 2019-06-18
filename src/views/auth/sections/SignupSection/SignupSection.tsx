@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import {
     SignupWrapper,
     SignupContent,
@@ -7,36 +7,10 @@ import {
     FooterContent,
     StyledLink,
 } from "./SignupStyles";
-import auth0 from "auth0-js";
 import RoundedInputBox from "components/RoundedInputBox/RoundedInputBox";
 import { Lock, Email } from "@material-ui/icons";
 import Fab from "@material-ui/core/Fab";
-import { AuthState } from "../../lib/reducers/auth-state.interface";
 import Auth from "Auth/Auth.js"
-
-/* export interface Props {
- *     //state: AuthState;
- *     dispatch: Function;
- * }*/
-
-/* const SignupSection: React.SFC<Props> = ({ state, dispatch }) => {
- *     var webAuth = new auth0.WebAuth({
- * 	domain:       'akshay-gadkari.auth0.com/',
- * 	clientID:     'fX2Ov3PrG67snp7CsUrUFcFE8RN5aglD'
- *     });
- * 
- *     const { email, password } = state;
- *     const signUp = () => {
- * 	webAuth.signup({
- * 	    connection: 'wellness-bet-backend',
- * 	    email: email,
- * 	    password: password
- * 	}, function (err:any) {
- *             if (err) return alert('Something went wrong: ' + err.message);
- *             return alert('success signup without login!')
- *         });
- * 	console.log('working');
- *     }*/
 
 const SignupSection = () => {
     const [values, setValues] = useState({
@@ -50,9 +24,6 @@ const SignupSection = () => {
     const onSignup = () => {
 	console.log(values);
 	auth0.signup(values);
-    };
-    const onLogin = () => {
-	auth0.login(values);
     };
 
     return (
@@ -102,20 +73,3 @@ const SignupSection = () => {
 };
 
 export { SignupSection };
-
-/* <RoundedInputBox
- * icon={<AccountCircle color="inherit" />}
- * value={username}
- * type="text"
- * name="username"
- * onChange={(e: React.SyntheticEvent) => {
- *     let target = e.target as HTMLInputElement;
- *     dispatch({
- *         type: "SET_TEXT",
- *         inputName: target.name,
- *         value: target.value,
- *     });
- * }}
- * placeholder={"Username"}
- * className="input-box"
- * />*/
