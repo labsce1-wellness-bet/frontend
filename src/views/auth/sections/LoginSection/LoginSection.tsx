@@ -1,87 +1,89 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import {
-  LoginWrapper,
-  LoginContent,
-  HeaderContent,
-  GetStartedForm,
-  FooterContent,
-  StyledLink,
+    LoginWrapper,
+    LoginContent,
+    HeaderContent,
+    GetStartedForm,
+    FooterContent,
+    StyledLink,
 } from "./LoginStyles";
 import { Logo } from "../../lib/assets/Logo";
 import RoundedInputBox from "components/RoundedInputBox/RoundedInputBox";
-import { AccountCircle, Lock } from "@material-ui/icons";
+import { Lock, Email } from "@material-ui/icons";
 import Fab from "@material-ui/core/Fab";
 import { AuthState } from "../../lib/reducers/auth-state.interface";
-export interface Props {
-  state: AuthState;
-  dispatch: Function;
-}
+import Auth from "Auth/Auth.js";
+//import auth0 from "auth0-js";
 
-const LoginSection: React.SFC<Props> = ({ state, dispatch }) => {
-  const { username, password } = state;
-  return (
-    <LoginWrapper>
-      <LoginContent>
-        <HeaderContent>
-          <Logo height="34" width="61" fill="none" />
-          <h1 className="organization">Wellness Bet</h1>
-          <h2 className="category">Sleep</h2>
-        </HeaderContent>
-        {/* TODO: Form validation */}
-        <GetStartedForm
-          onSubmit={(e: React.SyntheticEvent) => {
-            e.preventDefault();
-            //TODO: When submitting it should do an axios request to login
-          }}>
-          <RoundedInputBox
-            icon={<AccountCircle color="inherit" />}
-            value={username}
-            type="text"
-            name="username"
-            onChange={(e: React.SyntheticEvent) => {
-              let target = e.target as HTMLInputElement;
-              dispatch({
-                type: "SET_TEXT",
-                inputName: target.name,
-                value: target.value,
-              });
-            }}
-            placeholder={"Username"}
-            className="input-box"
-          />
-          <RoundedInputBox
-            icon={<Lock color="inherit" />}
-            value={password}
-            type="password"
-            name="password"
-            onChange={(e: React.SyntheticEvent) => {
-              let target = e.target as HTMLInputElement;
-              dispatch({
-                type: "SET_TEXT",
-                inputName: target.name,
-                value: target.value,
-              });
-            }}
-            placeholder={"Password"}
-            className="input-box"
-          />
-          <Fab
-            className="submit-btn"
-            color="primary"
-            variant="extended"
-            aria-label="Get Started">
-            Login
-          </Fab>
-        </GetStartedForm>
-        <FooterContent>
-          <StyledLink to={{ search: "?view=signup" }}>
-            Create Account
-          </StyledLink>
-          <StyledLink to="/">Need Help?</StyledLink>
-        </FooterContent>
-      </LoginContent>
-    </LoginWrapper>
-  );
+/* export interface Props {
+ *     state: AuthState;
+ *     dispatch: Function;
+ * }*/
+
+const LoginSection = () => {
+    console.log("something");
+    const [values, setValues] = useState({
+	email: "",
+	password: ""
+    });
+    const auth0 = new Auth();
+    const setText = (e: any) => {
+	setValues({ ...values, [e.target.name]: e.target.value });
+    };
+    const onLogin = () => {
+	console.log("on login function");
+	auth0.login(values);
+    };
+    return (
+	<LoginWrapper>
+	    <LoginContent>
+		<HeaderContent>
+		    <Logo height="34" width="61" fill="none" />
+		    <h1 className="organization">Wellness Bet</h1>
+		    <h2 className="category">Sleep</h2>
+		</HeaderContent>
+		{/* TODO: Form validation */}
+		<GetStartedForm
+		    onSubmit={(e:any) => {
+			    e.preventDefault();
+			    onLogin();
+		    }}>
+		    <RoundedInputBox
+		    icon={<Email color="inherit" />}
+		    value={values.email}
+		    type="text"
+		    name="email"
+		    onChange={setText}
+		    placeholder={"Email"}
+		    className="input-box"
+		    />
+		    <RoundedInputBox
+		    icon={<Lock color="inherit" />}
+		    value={values.password}
+		    type="password"
+		    name="password"
+		    onChange={setText}
+		    placeholder={"Password"}
+		    className="input-box"
+		    />
+		    <Fab
+			className="submit-btn"
+			color="primary"
+			variant="extended"
+			aria-label="Get Started"
+			type="submit">
+			Login
+		    </Fab>
+		</GetStartedForm>
+		<FooterContent>
+		    <StyledLink to={{ search: "?view=signup" }}>
+			Create Account
+		    </StyledLink>
+		    <StyledLink to="/">Need Help?</StyledLink>
+		</FooterContent>
+	    </LoginContent>
+	</LoginWrapper>
+    );
 };
 
 export { LoginSection };
