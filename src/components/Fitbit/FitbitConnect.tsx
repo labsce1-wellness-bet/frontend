@@ -13,6 +13,8 @@ const FitbitConnect: React.SFC<FitbitConnectProps> = props => {
   let redirectUri: string = process.env.REACT_APP_FITBIT_REDIRECT_URI || "";
   const encodedUri: string = encodeURI(redirectUri);
   const content: string = `client_id=22DR4B&grant_type=authorization_code&redirect_uri=${encodedUri}&code=${authCode}`;
+  const fitbitAuthorization: string =
+    process.env.REACT_APP_FITBIT_AUTHORIZATION || "";
 
   // Function to POST and retrieve Access and Refresh Token after receiving auth code.
   function authFitbit<Request, Response>(
@@ -45,10 +47,7 @@ const FitbitConnect: React.SFC<FitbitConnectProps> = props => {
         "Content-Type",
         "application/x-www-form-urlencoded; charset=UTF-8",
       );
-      request.setRequestHeader(
-        "Authorization",
-        "Basic MjJEUjRCOmM3MDYzMDU5YjA3MmZjNmY2OGJiYzliZTRmNjBiYWU5",
-      );
+      request.setRequestHeader("Authorization", fitbitAuthorization);
     }
     request.send(content);
   }
