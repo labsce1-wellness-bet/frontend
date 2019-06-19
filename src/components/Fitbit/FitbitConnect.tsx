@@ -69,7 +69,7 @@ const FitbitConnect: React.SFC<FitbitConnectProps> = props => {
       data: {
         // @ts-ignore
         fitbitRefresh: content.refresh_token,
-        //@ts-ignore
+        // @ts-ignore
         fitbitAccess: content.access_token,
       },
     });
