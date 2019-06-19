@@ -1,5 +1,6 @@
 import React from "react";
 import { Route } from "react-router-dom";
+import PrivateRoute from "components/PrivateRoute/PrivateRoute";
 import Callback from "views/callback/Callback";
 import Test from "views/test/Test";
 import AuthPage from "views/auth/Auth";
@@ -16,7 +17,8 @@ const App: React.FC = props => {
       <GlobalContext.Provider value={{}}>
         <Route exact path="/" component={AuthPage} />
         <Route exact path="/callback" component={Callback} />
-        <Route exact path="/test" component={Test} />
+        // @ts-ignore
+        <PrivateRoute path="/test" component={Test} isAuthenticated={true} />
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/fitbit" component={Fitbit} />
       </GlobalContext.Provider>
