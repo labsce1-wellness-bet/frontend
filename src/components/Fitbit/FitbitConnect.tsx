@@ -84,11 +84,7 @@ const FitbitConnect: React.SFC<FitbitConnectProps> = props => {
   }
 
   authFitbit("POST", "https://api.fitbit.com/oauth2/token", content);
-  return (
-    <div>
-      <h1>Fitbit Connecting</h1>
-    </div>
-  );
+  return <div />;
 };
 
 export default FitbitConnect;
