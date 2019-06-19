@@ -8,8 +8,8 @@ interface FitbitConnectProps {
 }
 
 const FitbitConnect: React.SFC<FitbitConnectProps> = props => {
-  const authCode: string = props.location.search.match(/(?<==).+?(?=&)/)[0];
-  const userId: number = props.location.search.match(/(?<=userId)(.*)/)[0];
+  const authCode: string = props.location.search.match(/=(.+?)&/)[1];
+  const userId: number = props.location.search.match(/userId(.*)/)[1];
   let redirectUri: string = process.env.REACT_APP_FITBIT_REDIRECT_URI || "";
   const encodedUri: string = encodeURI(redirectUri);
   const content: string = `client_id=22DR4B&grant_type=authorization_code&redirect_uri=${encodedUri}&code=${authCode}`;
