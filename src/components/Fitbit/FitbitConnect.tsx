@@ -1,16 +1,10 @@
 import React from "react";
-import { request } from "http";
+import axios from "axios";
 
 interface FitbitConnectProps {
   location: any;
+  history: any;
   search: string;
-}
-
-interface FitbitAuth {
-  fitbitAccess: String;
-  fitbitRefresh: String;
-  access_token: String;
-  refresh_token: String;
 }
 
 const FitbitConnect: React.SFC<FitbitConnectProps> = props => {
@@ -64,39 +58,29 @@ const FitbitConnect: React.SFC<FitbitConnectProps> = props => {
     method,
     url,
     content,
-    callback,
-    errorCallback,
   }: {
     method: "PUT";
     url: string;
     content?: Request;
-    callback?: (response: Response) => void;
-    errorCallback?: (err: any) => void;
   }) {
-    const request = new XMLHttpRequest();
-    request.open(method, url, true);
-    request.onload = () => {
-      if (request.status >= 200 && request.status < 400) {
-        const data = JSON.parse(request.response) as Response;
-        console.log(data);
-        callback && callback(data);
-      } else {
-      }
-    };
-    request.onerror = function(err) {
-      errorCallback && errorCallback(err);
-    };
-    if (method === "PUT") {
-      request.setRequestHeader("Content-Type", "application/json");
-    }
-
-    if (content) {
-      console.log("PUT Content", content);
-      content.fitbitAccess = content.access_token;
-      request.send({
-        content,
+    const response = axios({
+      method: method,
+      url: url,
+      data: {
+        // @ts-ignore
+        fitbitRefresh: content.refresh_token,
+        //@ts-ignore
+        fitbitAccess: content.access_token,
+      },
+    });
+    response
+      .then(response => {
+        console.log(response);
+        props.history.push(`/dashboard`);
+      })
+      .catch(error => {
+        console.error(error);
       });
-    }
   }
 
   authFitbit("POST", "https://api.fitbit.com/oauth2/token", content);
