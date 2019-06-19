@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import {
     LoginWrapper,
     LoginContent,
@@ -11,14 +11,8 @@ import { Logo } from "../../lib/assets/Logo";
 import RoundedInputBox from "components/RoundedInputBox/RoundedInputBox";
 import { Lock, Email } from "@material-ui/icons";
 import Fab from "@material-ui/core/Fab";
-import { AuthState } from "../../lib/reducers/auth-state.interface";
 import Auth from "Auth/Auth.js";
-//import auth0 from "auth0-js";
 
-/* export interface Props {
- *     state: AuthState;
- *     dispatch: Function;
- * }*/
 
 const LoginSection = () => {
     console.log("something");
