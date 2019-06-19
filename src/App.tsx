@@ -3,13 +3,14 @@ import { Route } from "react-router-dom";
 import Callback from "views/callback/Callback";
 import Test from "views/test/Test";
 import AuthPage from "views/auth/Auth";
+import Fitbit from "views/fitbit/Fitbit";
 import Dashboard from "views/dashboard/Dashboard";
 import { GlobalContext } from "./GlobalContext/GlobalContext";
 
 //The name of the tab
 document.title = "Wellness Bet deploy";
 
-const App: React.FC = () => {
+const App: React.FC = props => {
   return (
     <div className="App">
       <GlobalContext.Provider value={{}}>
@@ -17,6 +18,7 @@ const App: React.FC = () => {
         <Route exact path="/callback" component={Callback} />
         <Route exact path="/test" component={Test} />
         <Route path="/dashboard" component={Dashboard} />
+        <Route path="/fitbit" component={Fitbit} />
       </GlobalContext.Provider>
     </div>
   );
