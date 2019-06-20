@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
       bottom: 0,
       '@media (min-width:1024px)': {
 	  top: '0',
-	  bottom: '87%'
+	  bottom: '89%'
       }
   },
     toolbar: {
