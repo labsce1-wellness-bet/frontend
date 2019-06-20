@@ -7,6 +7,7 @@ const DashboardStartWrapper = styled.div`
   width: 100%;
   margin: 0 auto;
 `;
+
 const Content = styled.div`
   display: flex;
   flex-flow: column;
@@ -16,4 +17,5 @@ const Content = styled.div`
     margin-bottom: 24px;
   }
 `;
+
 export { DashboardStartWrapper, Content };

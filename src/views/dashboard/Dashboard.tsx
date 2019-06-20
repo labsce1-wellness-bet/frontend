@@ -25,10 +25,14 @@ import { Settings, Group } from "@material-ui/icons";
 
 const useStyles = makeStyles(theme => ({
   appBar: {
-    top: "auto",
-    bottom: 0,
+      top: "auto",
+      bottom: 0,
+      '@media (min-width:1024px)': {
+	  top: '0',
+	  bottom: '87%'
+      }
   },
-  toolbar: {
+    toolbar: {
     display: "flex",
     justifyContent: "space-between",
   },
