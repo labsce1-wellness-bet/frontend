@@ -1,12 +1,10 @@
 import React from "react";
-import {
-  DashboardNewGroupWrapper,
-  Form,
-  CustomButton,
-} from "./DashboardNewGroupStyles";
+import { DashboardNewGroupWrapper, Form } from "./DashboardNewGroupStyles";
 import newGroupReducer from "./newGroupReducer";
 import TextField from "@material-ui/core/TextField";
 import { Button } from "@material-ui/core";
+import Typography from "@material-ui/core/Typography";
+
 export interface Props {}
 
 // @ts-ignore
@@ -28,8 +26,17 @@ const DashboardNewGroup: React.SFC<Props> = () => {
   } = state;
   return (
     <DashboardNewGroupWrapper>
+      <Typography
+        variant="h4"
+        color="primary"
+        align="center"
+        className="title"
+        gutterBottom={true}>
+        New Group
+      </Typography>
       <Form>
         <TextField
+          className="input"
           id="filled-group-name"
           label="Group Name"
           name="groupName"
@@ -43,6 +50,7 @@ const DashboardNewGroup: React.SFC<Props> = () => {
           required={true}
         />
         <TextField
+          className="input"
           id="filled-bet-amount"
           label="Buy in Amount $"
           name="betAmount"
@@ -66,6 +74,7 @@ const DashboardNewGroup: React.SFC<Props> = () => {
           required={true}
         />
         <TextField
+          className="input"
           id="filled-start-date"
           label="Start Date"
           name="startDate"
@@ -87,6 +96,7 @@ const DashboardNewGroup: React.SFC<Props> = () => {
           required={true}
         />
         <TextField
+          className="input"
           id="filled-end-date"
           label="End Date"
           name="endDate"
@@ -108,6 +118,7 @@ const DashboardNewGroup: React.SFC<Props> = () => {
           required={true}
         />
         <TextField
+          className="input"
           id="filled-goal-amount"
           label="Hours per Day "
           name="goal"
@@ -132,6 +143,7 @@ const DashboardNewGroup: React.SFC<Props> = () => {
           required={true}
         />
         <TextField
+          className="input"
           id="filled-join-code"
           label="Join Code"
           name="joinCode"
@@ -146,6 +158,7 @@ const DashboardNewGroup: React.SFC<Props> = () => {
         />
         <TextField
           id="filled-message-group"
+          className="message-input"
           label="Message to Group"
           name="messageGroup"
           value={messageGroup}
@@ -158,9 +171,9 @@ const DashboardNewGroup: React.SFC<Props> = () => {
           multiline={true}
           rows={3}
         />
-        <CustomButton variant="contained" color="primary">
+        <Button variant="contained" color="primary" className="button">
           Create New Group
-        </CustomButton>
+        </Button>
       </Form>
     </DashboardNewGroupWrapper>
   );
