@@ -6,11 +6,13 @@ const UserContext = React.createContext({
   email: "ckirkwood94@gmail.com",
   groups: [
     {
+      groupId: 1,
       groupName: "Sleeping People",
       members: ["Caleb", "Akshay", "Simon", "Boniface"],
       admin: "Caleb Kirkwood",
     },
     {
+      groupId: 2,
       groupName: "Insomniacs",
       members: ["Caleb", "Jonathan", "Eric", "Brian"],
       admin: "Jonathan",
