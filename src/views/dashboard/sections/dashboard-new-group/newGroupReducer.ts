@@ -9,10 +9,17 @@ const initialState = {
   groupName: "",
   messageGroup: "",
   joinCode: "",
+  betAmount: "",
 };
 const newGroupReducer = (state: State, action: Action) => {
   switch (action.type) {
     case "SET_TEXT": {
+      return {
+        ...state,
+        [action.inputName]: action.value,
+      };
+    }
+    case "SET_CURRENCY": {
       return {
         ...state,
         [action.inputName]: action.value,
