@@ -3,12 +3,23 @@ import { DashboardUserWrapper } from "./DashboardUserStyles";
 import { Typography } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 
+import {
+  UploadImageWidget,
+  uploadWidgetReducer,
+} from "components/UploadImageWidget/index";
+
+import uploadToCloudinaryReducer from "lib/utils/uploadImageToCloudinary/uploadToCloudinaryReducer";
+import uploadImageToCloudinary from "lib/utils/uploadImageToCloudinary/uploadImageToCloudinary";
+
 interface Props {
   group: any;
 }
 const BeforeStart: React.FC<Props> = props => {
-  console.log(props.group);
+  const [uwState, uwDispatch] = uploadWidgetReducer();
+  const [cloudState, cloudDispatch] = uploadToCloudinaryReducer();
+  const { base64ImageData } = uwState;
   const group = props.group;
+
   return (
     <DashboardUserWrapper>
       <div className="info-container">
@@ -77,6 +88,34 @@ const BeforeStart: React.FC<Props> = props => {
         </Button>
         <Button variant="outlined" color="primary" className="button">
           LEAVE
+        </Button>
+      </div>
+      <div className="drag-n-drop">
+        <UploadImageWidget
+          startingInstructions={"Drag and drop photo evidence of payment here."}
+          afterUploadInstructions={
+            "Drag and drop new photo to change current one."
+          }
+          state={uwState}
+          dispatch={uwDispatch}
+        />
+        <Button
+          variant="contained"
+          color="primary"
+          className="button"
+          onClick={async () => {
+            const data = await uploadImageToCloudinary(
+              {
+                upload_preset: "users-receipts",
+                public_id: "receipt-from-user1234",
+              },
+              base64ImageData,
+              cloudDispatch,
+            );
+            console.log({ data });
+            console.log({ cloudState });
+          }}>
+          Upload Image
         </Button>
       </div>
     </DashboardUserWrapper>

@@ -76,6 +76,23 @@ const DashboardUserWrapper = styled.div`
   .button:last-child {
     margin-bottom: 80px;
   }
+
+  .drag-n-drop {
+    display: none;
+
+    @media ${device.laptop} {
+      display: flex;
+      align-items: center
+      flex-direction: column;
+      width: 100%;
+      margin-top: 50px;
+      
+      .button {
+        margin-top: 30px;
+        width: 160px;
+      }
+    }
+  }
 `;
 
 export { DashboardUserWrapper };
