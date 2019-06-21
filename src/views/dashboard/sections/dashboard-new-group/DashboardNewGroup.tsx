@@ -20,7 +20,7 @@ const DashboardNewGroup: React.SFC<Props> = () => {
         gutterBottom={true}>
         New Group
       </Typography>
-      <Form>
+      <Form className="form">
         <TextField
           className="input"
           id="filled-group-name"

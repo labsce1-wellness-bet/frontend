@@ -39,17 +39,12 @@ const Form = styled.form`
 
   @media ${device.laptop} {
     width: 80%;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
     .input {
-      width: 45%;
-    }
-    .message-input {
-      width: 100%;
-      textarea {
-        height: 160px;
-      }
+      width: 60%;
     }
   }
 `;
