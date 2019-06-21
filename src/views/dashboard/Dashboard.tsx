@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Route, Link } from "react-router-dom";
 
 import { DashboardStart } from "./sections/dashboard-start/DashboardStart";
 import { DashboardJoinGroup } from "./sections/dashboard-join-group/DashboardJoinGroup";
 import { DashboardNewGroup } from "./sections/dashboard-new-group/DashboardNewGroup";
 import { DashboardAdmin } from "./sections/dashboard-admin/DashboardAdmin";
+import { DashboardNewComp } from "./sections/dashboard-new-comp/DashboardNewComp";
+import { HandleGroupView } from "./sections/HandleGroupView";
 
 import { DashboardWrapper } from "./DashboardStyles";
 import AppBar from "@material-ui/core/AppBar";
@@ -22,6 +24,7 @@ import {
   Divider,
 } from "@material-ui/core";
 import { Settings, Group } from "@material-ui/icons";
+import { UserContext } from "GlobalContext/UserContext";
 
 const useStyles = makeStyles(theme => ({
   appBar: {
@@ -41,6 +44,12 @@ const useStyles = makeStyles(theme => ({
 }));
 interface Props {}
 const Dashboard: React.SFC<Props> = () => {
+  const state: {
+    fname: string;
+    lname: string;
+    email: string;
+    groups: any;
+  } = useContext(UserContext);
   const classes = useStyles();
   const [isMenuDrawerOpen, setIsMenuDrawerOpen] = useState(false);
   const [isPlusDrawerOpen, setIsPlusDrawerOpen] = useState(false);
@@ -54,6 +63,15 @@ const Dashboard: React.SFC<Props> = () => {
       />
       <Route exact path="/dashboard/new-group" component={DashboardNewGroup} />
       <Route exact path="/dashboard/admin" component={DashboardAdmin} />
+      <Route
+        exact
+        path="/dashboard/group/:groupId"
+        component={HandleGroupView}
+      />
+      <Route
+        exact
+        path="/dashboard/new-comp"
+        component={DashboardNewComp}></Route>
       {/* Every page for dashboard has the below components */}
       <SwipeableDrawer
         anchor="left"
@@ -63,19 +81,31 @@ const Dashboard: React.SFC<Props> = () => {
         <div className={classes.fullList}>
           <header>
             {/* TODO: Bring in data for name and email of user */}
-            <h2>Jake Johnson</h2>
-            <p>jake.johnson@email.com</p>
+            <h2>{`${state.fname} ${state.lname}`}</h2>
+            <p>{`${state.email}`}</p>
           </header>
           <Divider />
           <List>
-            <Link to="/dashboard/groups">
+            {state.groups.length === 0 ? (
+              <h5>No groups</h5>
+            ) : (
+              // @ts-ignore
+              state.groups.map(group => {
+                return (
+                  <Link
+                    to={`/dashboard/group/${group.groupId}`}
+                    key={group.groupId}>{`${group.groupName}`}</Link>
+                );
+              })
+            )}
+            {/* <Link to="/dashboard/groups">
               <ListItem button>
                 <ListItemIcon>
                   <Group />
                 </ListItemIcon>
                 <ListItemText>Groups</ListItemText>
               </ListItem>
-            </Link>
+            </Link> */}
             <Link to="/dashboard/settings">
               <ListItem button>
                 <ListItemIcon>
