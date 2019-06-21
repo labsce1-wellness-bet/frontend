@@ -9,13 +9,13 @@ const UserContext = React.createContext({
       groupId: 1,
       groupName: "Sleeping People",
       members: ["Caleb", "Akshay", "Simon", "Boniface"],
-      admin: "Caleb Kirkwood",
+      admin: 123,
     },
     {
       groupId: 2,
       groupName: "Insomniacs",
       members: ["Caleb", "Jonathan", "Eric", "Brian"],
-      admin: "Jonathan",
+      admin: 423,
     },
   ],
 });
