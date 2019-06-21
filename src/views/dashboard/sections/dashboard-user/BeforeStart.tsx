@@ -11,76 +11,74 @@ const BeforeStart: React.FC<Props> = props => {
   const group = props.group;
   return (
     <DashboardUserWrapper>
-      <Typography
-        variant="h4"
-        color="primary"
-        align="center"
-        className="title"
-        gutterBottom={true}>
-        {group.groupName}
-      </Typography>
-      <Typography
-        variant="h6"
-        color="textPrimary"
-        align="left"
-        className="text"
-        gutterBottom={true}>
-        {`Admin: ${group.adminName}`}
-      </Typography>
-      <Typography
-        variant="h6"
-        color="textPrimary"
-        align="left"
-        className="text"
-        gutterBottom={true}>
-        {`Buy in: $${group.betAmount}`}
-      </Typography>
-      <Typography
-        variant="h6"
-        color="textPrimary"
-        align="left"
-        className="text"
-        gutterBottom={true}>
-        {`Current Pot Total: $${group.potTotal}`}
-      </Typography>
-      <Typography
-        variant="h6"
-        color="textPrimary"
-        align="left"
-        className="text"
-        gutterBottom={true}>
-        {`Start: ${group.startDate}`}
-      </Typography>
-      <Typography
-        variant="h6"
-        color="textPrimary"
-        align="left"
-        className="text"
-        gutterBottom={true}>
-        {`End: ${group.endDate}`}
-      </Typography>
-      <Typography
-        variant="h6"
-        color="textSecondary"
-        align="left"
-        className="message"
-        gutterBottom={true}>
-        {`Message:`}
-      </Typography>
-      <Typography
-        variant="body1"
-        color="textPrimary"
-        align="left"
-        className="message-text"
-        gutterBottom={true}>
-        {`${group.message}`}
-      </Typography>
-      <Button variant="contained" color="primary" className="button">
-        ADD PAYMENT PROOF
-      </Button>
-      <Button variant="outlined" color="primary" className="button">
-        LEAVE
-      </Button>
+      <div className="info-container">
+        <Typography
+          variant="h4"
+          color="primary"
+          align="center"
+          className="title">
+          {group.groupName}
+        </Typography>
+        <Typography
+          variant="h6"
+          color="textPrimary"
+          align="left"
+          className="text">
+          {`Admin: ${group.adminName}`}
+        </Typography>
+        <Typography
+          variant="h6"
+          color="textPrimary"
+          align="left"
+          className="text">
+          {`Buy in: $${group.betAmount}`}
+        </Typography>
+        <Typography
+          variant="h6"
+          color="textPrimary"
+          align="left"
+          className="text">
+          {`Current Pot Total: $${group.potTotal}`}
+        </Typography>
+        <Typography
+          variant="h6"
+          color="textPrimary"
+          align="left"
+          className="text">
+          {`Start: ${group.startDate}`}
+        </Typography>
+        <Typography
+          variant="h6"
+          color="textPrimary"
+          align="left"
+          className="text">
+          {`End: ${group.endDate}`}
+        </Typography>
+      </div>
+      <div className="message-container">
+        <Typography
+          variant="h6"
+          color="textSecondary"
+          align="left"
+          className="message">
+          {`Message:`}
+        </Typography>
+        <Typography
+          variant="body1"
+          color="textPrimary"
+          align="left"
+          className="message-text">
+          {`${group.message}`}
+        </Typography>
+      </div>
+      <div className="button-container">
+        <Button variant="contained" color="primary" className="button">
+          ADD PAYMENT PROOF
+        </Button>
+        <Button variant="outlined" color="primary" className="button">
+          LEAVE
+        </Button>
+      </div>
     </DashboardUserWrapper>
   );
 };
