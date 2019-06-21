@@ -1,5 +1,5 @@
 import { useReducer } from "react";
-
+import moment from "moment";
 interface Action {
   type: string;
   [key: string]: any;
@@ -10,6 +10,9 @@ const initialState = {
   messageGroup: "",
   joinCode: "",
   betAmount: "",
+  startDate: moment().format("YYYY-MM-DD"),
+  endDate: moment().format("YYYY-MM-DD"),
+  goal: "",
 };
 const newGroupReducer = (state: State, action: Action) => {
   switch (action.type) {

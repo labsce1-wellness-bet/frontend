@@ -3,17 +3,26 @@ import { DashboardNewGroupWrapper, Form } from "./DashboardNewGroupStyles";
 import newGroupReducer from "./newGroupReducer";
 import TextField from "@material-ui/core/TextField";
 import { Button } from "@material-ui/core";
+import moment from "moment";
 export interface Props {}
 
 // @ts-ignore
-const limitDecimal = value => {
-  let result = parseFloat(value).toFixed(2);
+const limitDecimal = (value, numDecimals) => {
+  let result = parseFloat(value).toFixed(numDecimals);
   return value.length > result.length ? result : value;
 };
 
 const DashboardNewGroup: React.SFC<Props> = () => {
   const [state, dispatch] = newGroupReducer();
-  const { groupName, messageGroup, joinCode, betAmount } = state;
+  const {
+    groupName,
+    messageGroup,
+    joinCode,
+    betAmount,
+    startDate,
+    endDate,
+    goal,
+  } = state;
   return (
     <DashboardNewGroupWrapper>
       <Form>
@@ -32,18 +41,87 @@ const DashboardNewGroup: React.SFC<Props> = () => {
         />
         <TextField
           id="filled-bet-amount"
-          label="Bet Amount $"
+          label="Buy in Amount $"
           name="betAmount"
           value={betAmount}
           type="number"
           placeholder="0.00"
-          inputProps={{ step: "0.01", min: "0.00", pattern: "^d*(.d{0,2})?$" }}
+          inputProps={{
+            step: "0.01",
+            min: "0.00",
+          }}
           onChange={(e: any) => {
             const { name, value } = e.target;
             dispatch({
-              type: "SET_CURRENCY",
+              type: "SET_TEXT",
               inputName: name,
-              value: limitDecimal(value),
+              value: limitDecimal(value, 2),
+            });
+          }}
+          margin="normal"
+          variant="filled"
+          required={true}
+        />
+        <TextField
+          id="filled-start-date"
+          label="Start Date"
+          name="startDate"
+          value={startDate}
+          type="date"
+          onChange={(e: any) => {
+            const { name, value } = e.target;
+            dispatch({
+              type: "SET_TEXT",
+              inputName: name,
+              value: value,
+            });
+          }}
+          InputLabelProps={{
+            shrink: true,
+          }}
+          margin="normal"
+          variant="filled"
+          required={true}
+        />
+        <TextField
+          id="filled-end-date"
+          label="End Date"
+          name="endDate"
+          value={endDate}
+          type="date"
+          onChange={(e: any) => {
+            const { name, value } = e.target;
+            dispatch({
+              type: "SET_TEXT",
+              inputName: name,
+              value: value,
+            });
+          }}
+          InputLabelProps={{
+            shrink: true,
+          }}
+          margin="normal"
+          variant="filled"
+          required={true}
+        />
+        <TextField
+          id="filled-goal-amount"
+          label="Hours per Day "
+          name="goal"
+          value={goal}
+          type="number"
+          placeholder={`${8}`}
+          inputProps={{
+            step: "0.5",
+            min: "5",
+            max: "10",
+          }}
+          onChange={(e: any) => {
+            const { name, value } = e.target;
+            dispatch({
+              type: "SET_TEXT",
+              inputName: name,
+              value: limitDecimal(value, 1),
             });
           }}
           margin="normal"
