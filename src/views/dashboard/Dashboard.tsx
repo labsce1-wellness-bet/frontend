@@ -5,6 +5,7 @@ import { DashboardStart } from "./sections/dashboard-start/DashboardStart";
 import { DashboardJoinGroup } from "./sections/dashboard-join-group/DashboardJoinGroup";
 import { DashboardNewGroup } from "./sections/dashboard-new-group/DashboardNewGroup";
 import { DashboardAdmin } from "./sections/dashboard-admin/DashboardAdmin";
+import { DashboardNewComp } from "./sections/dashboard-new-comp/DashboardNewComp";
 import { HandleGroupView } from "./sections/HandleGroupView";
 
 import { DashboardWrapper } from "./DashboardStyles";
@@ -67,6 +68,10 @@ const Dashboard: React.SFC<Props> = () => {
         path="/dashboard/group/:groupId"
         component={HandleGroupView}
       />
+      <Route
+        exact
+        path="/dashboard/new-comp"
+        component={DashboardNewComp}></Route>
       {/* Every page for dashboard has the below components */}
       <SwipeableDrawer
         anchor="left"
