@@ -4,7 +4,6 @@ export interface AuthFitbitProps {
 }
 
 const AuthFitbit: React.SFC<AuthFitbitProps> = props => {
-  console.log("AuthFitbit", props);
   const passState: string = `userId${props.userId}`;
   let redirectUri: string = process.env.REACT_APP_FITBIT_REDIRECT_URI || "";
   const encodedUri: string = encodeURI(redirectUri);
