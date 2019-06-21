@@ -13,7 +13,6 @@ const DashboardUser: React.FC<Props> = props => {
   const end_date = props.group.endDate;
   const isStarted = curr_date >= start_date;
   const isEnded = curr_date > end_date;
-  console.log(isStarted, isEnded);
 
   if (isEnded) {
     return <div>Competition over</div>;
