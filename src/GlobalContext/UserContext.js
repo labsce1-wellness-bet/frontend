@@ -26,12 +26,17 @@ const UserContext = React.createContext({
     {
       groupId: 2,
       groupName: "Insomniacs",
-      members: ["Caleb", "Jonathan", "Eric", "Brian"],
+      members: [
+        { fname: "Caleb", lname: "Kirkwood", progress: 12, paid: true },
+        { fname: "Jonathan", lname: "Holloway", progress: 24, paid: true },
+        { fname: "John", lname: "Schmidt", progress: 6, paid: true },
+        { fname: "Mary", lname: "Smith", progress: 18, paid: true },
+      ],
       admin: 423,
       adminName: "Jonathan Holloway",
       betAmount: 25,
       startDate: moment()
-        .add(5, "days")
+        .subtract(5, "days")
         .format("M/DD/YYYY"),
       endDate: moment()
         .add(22, "days")
