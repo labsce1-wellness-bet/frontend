@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Route } from "react-router-dom";
 import PrivateRoute from "components/PrivateRoute/PrivateRoute";
 import Callback from "views/callback/Callback";
@@ -12,15 +12,16 @@ import { GlobalContext } from "./GlobalContext/GlobalContext";
 document.title = "Wellness Bet deploy";
 
 const App: React.FC = props => {
+  const globalContext: { isAuthenticated: boolean } = useContext(GlobalContext);
+
   return (
     <div className="App">
-      <GlobalContext.Provider value={{}}>
+      <GlobalContext.Provider value={globalContext}>
         <Route exact path="/" component={AuthPage} />
-        <Route exact path="/callback" component={Callback} />
-        // @ts-ignore
-        <PrivateRoute path="/test" component={Test} isAuthenticated={true} />
-        <Route path="/dashboard" component={Dashboard} />
-        <Route path="/fitbit" component={Fitbit} />
+        <PrivateRoute exact path="/callback" component={Callback} />
+        <PrivateRoute path="/test" component={Test} />
+        <PrivateRoute path="/dashboard" component={Dashboard} />
+        <PrivateRoute path="/fitbit" component={Fitbit} />
       </GlobalContext.Provider>
     </div>
   );
