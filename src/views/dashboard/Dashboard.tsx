@@ -5,7 +5,6 @@ import { DashboardStart } from "./sections/dashboard-start/DashboardStart";
 import { DashboardJoinGroup } from "./sections/dashboard-join-group/DashboardJoinGroup";
 import { DashboardNewGroup } from "./sections/dashboard-new-group/DashboardNewGroup";
 import { DashboardAdmin } from "./sections/dashboard-admin/DashboardAdmin";
-import { DashboardBeforeStartUser } from "./sections/dashboard-before-start/DashboardBeforeStartUser";
 import { HandleGroupView } from "./sections/HandleGroupView";
 
 import { DashboardWrapper } from "./DashboardStyles";
