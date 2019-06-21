@@ -1,5 +1,5 @@
 import React from "react";
-import { DashboardUserWrapper } from "./DashboardUserStyles";
+import { BeforeStartWrapper } from "./BeforeStartStyles";
 import { Typography } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 
@@ -21,7 +21,7 @@ const BeforeStart: React.FC<Props> = props => {
   const group = props.group;
 
   return (
-    <DashboardUserWrapper>
+    <BeforeStartWrapper>
       <div className="info-container">
         <Typography
           variant="h4"
@@ -118,7 +118,7 @@ const BeforeStart: React.FC<Props> = props => {
           Upload Image
         </Button>
       </div>
-    </DashboardUserWrapper>
+    </BeforeStartWrapper>
   );
 };
 
