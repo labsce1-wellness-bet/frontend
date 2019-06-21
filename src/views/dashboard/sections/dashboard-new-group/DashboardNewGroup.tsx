@@ -7,8 +7,7 @@ import Typography from "@material-ui/core/Typography";
 
 export interface Props {}
 
-// @ts-ignore
-const limitDecimal = (value, numDecimals) => {
+const limitDecimal = (value: string, numDecimals: number | undefined) => {
   let result = parseFloat(value).toFixed(numDecimals);
   return value.length > result.length ? result : value;
 };

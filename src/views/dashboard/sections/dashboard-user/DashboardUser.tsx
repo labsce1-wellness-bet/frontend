@@ -1,15 +1,13 @@
 import React from "react";
 import { DashboardUserWrapper } from "./DashboardUserStyles";
+import { Typography } from "@material-ui/core";
+import { BeforeStart } from "./BeforeStart";
 
 interface Props {
   group: any;
 }
 const DashboardUser: React.FC<Props> = props => {
-  return (
-    <DashboardUserWrapper>
-      <h1>{`User before start group id: ${props.group.groupId}`}</h1>
-    </DashboardUserWrapper>
-  );
+  return <BeforeStart group={props.group}></BeforeStart>;
 };
 
 export { DashboardUser };
