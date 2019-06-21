@@ -1,9 +1,12 @@
 import React from "react";
-import { DashboardNewGroupWrapper, Form } from "./DashboardNewGroupStyles";
+import {
+  DashboardNewGroupWrapper,
+  Form,
+  CustomButton,
+} from "./DashboardNewGroupStyles";
 import newGroupReducer from "./newGroupReducer";
 import TextField from "@material-ui/core/TextField";
 import { Button } from "@material-ui/core";
-import moment from "moment";
 export interface Props {}
 
 // @ts-ignore
@@ -155,9 +158,9 @@ const DashboardNewGroup: React.SFC<Props> = () => {
           multiline={true}
           rows={3}
         />
-        <Button variant="contained" color="primary">
+        <CustomButton variant="contained" color="primary">
           Create New Group
-        </Button>
+        </CustomButton>
       </Form>
     </DashboardNewGroupWrapper>
   );

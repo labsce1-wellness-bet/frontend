@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Button } from "@material-ui/core";
 
 const DashboardNewGroupWrapper = styled.div`
   display: flex;
@@ -11,4 +12,11 @@ const Form = styled.form`
   width: 90%;
 `;
 
-export { DashboardNewGroupWrapper, Form };
+const CustomButton = styled(Button)`
+  width: 50%;
+  && {
+    margin: 20px auto 100px;
+  }
+`;
+
+export { DashboardNewGroupWrapper, Form, CustomButton };
