@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import { device } from "../../../../mediaQueries";
 
-const DashboardNewGroupWrapper = styled.div`
+const DashboardNewCompWrapper = styled.div`
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
 
   @media ${device.laptop} {
     width: 1000px;
     margin: 0 auto;
+    flex-wrap: wrap;
   }
 
   .button {
@@ -21,11 +21,9 @@ const DashboardNewGroupWrapper = styled.div`
     }
   }
   .title {
-    display: block;
-    width: 100%;
-    margin-top: 100px;
-
+    display: none;
     @media ${device.laptop} {
+      display: block;
       width: 100%;
       margin-top: 100px;
     }
@@ -39,14 +37,19 @@ const Form = styled.form`
 
   @media ${device.laptop} {
     width: 80%;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
     .input {
-      width: 60%;
+      width: 45%;
+    }
+    .message-input {
+      width: 100%;
+      textarea {
+        height: 160px;
+      }
     }
   }
 `;
 
-export { DashboardNewGroupWrapper, Form };
+export { DashboardNewCompWrapper, Form };
