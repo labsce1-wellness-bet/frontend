@@ -60,7 +60,6 @@ const CompRunning: React.FC<Props> = props => {
   );
   const startDate = moment(group.startDate, "M/DD/YYYY");
   const endDate = moment(group.endDate, "M/DD/YYYY");
-  const totalDays = endDate.diff(startDate, "days") + 1;
   const today = moment(moment().format("M/DD/YYYY"), "M/DD/YYYY");
   const daysLeft = endDate.diff(today, "days") + 1;
   const daysPast = today.diff(startDate, "days");
