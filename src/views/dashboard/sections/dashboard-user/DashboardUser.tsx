@@ -1,6 +1,7 @@
 import React from "react";
 import { BeforeStart } from "./BeforeStart";
 import { CompRunning } from "./CompRunning";
+import { CompEnd } from "./CompEnd";
 
 import moment from "moment";
 
@@ -15,7 +16,7 @@ const DashboardUser: React.FC<Props> = props => {
   const isEnded = curr_date > end_date;
 
   if (isEnded) {
-    return <div>Competition over</div>;
+    return <CompEnd group={props.group}></CompEnd>;
   } else if (!isStarted) {
     return <BeforeStart group={props.group}></BeforeStart>;
   }
