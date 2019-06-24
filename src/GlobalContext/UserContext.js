@@ -55,15 +55,36 @@ const UserContext = React.createContext({
           paid: true,
           last_five: [8, 15, 22, 26, 31],
         },
+        {
+          fname: "Akshay",
+          lname: "Gadkari",
+          progress: 37,
+          paid: true,
+          last_five: [7, 16, 24, 30, 37],
+        },
+        {
+          fname: "Boniface",
+          lname: "Makau",
+          progress: 39,
+          paid: true,
+          last_five: [8, 17, 24, 32, 39],
+        },
+        {
+          fname: "Simon",
+          lname: "Davis",
+          progress: 41,
+          paid: true,
+          last_five: [10, 18, 25, 33, 41],
+        },
       ],
       admin: 423,
       adminName: "Jonathan Holloway",
       betAmount: 25,
       startDate: moment()
-        .subtract(5, "days")
+        .subtract(1, "days")
         .format("M/DD/YYYY"),
       endDate: moment()
-        .add(22, "days")
+        .add(3, "days")
         .format("M/DD/YYYY"),
       potTotal: 100,
       message:
