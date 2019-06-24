@@ -13,6 +13,35 @@ import AuthFitbit from "components/Fitbit/AuthFitbit";
 
 interface Props {}
 
+var request = require("request");
+
+var options = { method: 'POST',
+		url: 'https://akshay-gadkari.auth0.com/oauth/token',
+		headers: { 'content-type': 'application/x-www-form-urlencoded' },
+		form: 
+   { grant_type: 'authorization_code',
+     client_id: 'fX2Ov3PrG67snp7CsUrUFcFE8RN5aglD',
+     client_secret: process.env.YOUR_CLIENT_SECRET,
+     code: 'YOUR_AUTHORIZATION_CODE',
+     redirect_ui: process.env.CALLBACK_PAGE
+   }
+};
+
+
+request(options, function (error: object, response: object, body: object) {
+    //if (error) throw new Error(error);
+    console.log("body", body);
+});
+
+/* var options = { method: 'GET',
+ * 		url: 'https://akshay-gadkari.auth0.com/api/v2/users',
+ * 		qs: { q: 'name:"caleb kirkwood"', search_engine: 'v2' },
+ * 		headers: { authorization: 'Bearer YOUR_MGMT_API_ACCESS_TOKEN' } };*/
+
+/* request(options, function (error: object, response: object, body: object) {
+ *     console.log("body", body);
+ * });*/
+
 const Test: React.SFC<Props> = () => {
   const [uwState, uwDispatch] = uploadWidgetReducer();
   const [cloudState, cloudDispatch] = uploadToCloudinaryReducer();

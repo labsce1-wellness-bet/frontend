@@ -23,7 +23,7 @@ import {
     ListItemText,
     Divider,
 } from "@material-ui/core";
-import { Settings, Group } from "@material-ui/icons";
+import { Settings } from "@material-ui/icons";
 import { UserContext } from "GlobalContext/UserContext";
 
 const useStyles = makeStyles(theme => ({

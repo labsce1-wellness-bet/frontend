@@ -8,7 +8,7 @@ export default class Auth {
 	responseType: "token id_token",
 	scope: "openid",
     });
-   
+    
     signup(signupParams, successCb, errorCb) {
 	console.log("signup called");
 	console.log(this.auth0);
@@ -64,12 +64,12 @@ export default class Auth {
 	    if (err) {
 		return console.log(err);
 	    }
-	    console.log(authResult);
+	    console.log("AUTH", authResult);
 	    this.auth0.client.userInfo(authResult.accessToken, (err, user) => {
 		if (err) {
 		    return console.log(err);
 		}
-		console.log(user);
+		console.log("USER", user);
 		return user;
 	    });
 	});
