@@ -6,7 +6,7 @@ export default class Auth {
 	clientID: "fX2Ov3PrG67snp7CsUrUFcFE8RN5aglD",
 	redirectUri: process.env.REACT_APP_FRONTEND_REDIRECT,
 	responseType: "token id_token",
-	scope: "openid",
+	scope: "openid profile",
     });
     
     signup(signupParams, successCb, errorCb) {
@@ -59,15 +59,19 @@ export default class Auth {
 	    }
 	);
     }
-    getUserInfo() {
+    getUserInfo(successCb, errorCb) {
 	this.auth0.parseHash({ hash: window.location.hash }, (err, authResult) => {
 	    if (err) {
 		return console.log(err);
 	    }
 	    console.log("AUTH", authResult);
+	    window.localStorage.setItem("access_token", authResult.accessToken);
 	    this.auth0.client.userInfo(authResult.accessToken, (err, user) => {
 		if (err) {
 		    return console.log(err);
+		}
+		if (successCb) {
+		    successCb(user);
 		}
 		console.log("USER", user);
 		return user;
