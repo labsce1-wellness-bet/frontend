@@ -10,16 +10,11 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Card from "@material-ui/core/Card";
 import { BeforeStart } from "./BeforeStart";
-import {
-  VictoryChart,
-  VictoryArea,
-  VictoryGroup,
-  VictoryLabel,
-  VictoryPie,
-} from "victory";
+import { VictoryLabel, VictoryPie } from "victory";
 import moment from "moment";
 import { UserContext } from "GlobalContext/UserContext";
 import { CardHeader, CardContent, Typography } from "@material-ui/core";
+import { LineGraph } from "components/Graphs/LineGraph";
 
 const useStyles = makeStyles(theme => ({
   appBar: {
@@ -42,19 +37,6 @@ const CompRunning: React.FC<Props> = props => {
   group.members.sort((a: any, b: any) =>
     a.progress > b.progress ? -1 : b.progress > a.progress ? 1 : 0,
   );
-  const graphColorSelf = "green";
-  const graphColors = [
-    "cyan",
-    "magenta",
-    "yellow",
-    "orange",
-    "purple",
-    "aquamarine",
-    "chocolate",
-    "crimson",
-    "darkblue",
-    "black",
-  ];
   const self = group.members.find(
     (member: { fname: string }) => member.fname === state.fname,
   );
@@ -150,60 +132,10 @@ const CompRunning: React.FC<Props> = props => {
         <Card className="card comp-stats">
           <CardHeader title="Competition Statistics"></CardHeader>
           <CardContent>
-            <VictoryChart width={1000} height={280}>
-              <VictoryGroup
-                style={{ data: { strokeWidth: 3, fillOpacity: 0.2 } }}
-                colorScale={graphColors}>
-                {group.members.map((member: any, index: number) => {
-                  return (
-                    <VictoryArea
-                      key={index}
-                      style={{
-                        data:
-                          member.fname === state.fname
-                            ? {
-                                fill: graphColorSelf,
-                                stroke: graphColorSelf,
-                              }
-                            : {},
-                      }}
-                      data={[
-                        {
-                          x: moment()
-                            .subtract(5, "days")
-                            .format("M/DD/YYYY"),
-                          y: member.last_five[0],
-                        },
-                        {
-                          x: moment()
-                            .subtract(4, "days")
-                            .format("M/DD/YYYY"),
-                          y: member.last_five[1],
-                        },
-                        {
-                          x: moment()
-                            .subtract(3, "days")
-                            .format("M/DD/YYYY"),
-                          y: member.last_five[2],
-                        },
-                        {
-                          x: moment()
-                            .subtract(2, "days")
-                            .format("M/DD/YYYY"),
-                          y: member.last_five[3],
-                        },
-                        {
-                          x: moment()
-                            .subtract(1, "days")
-                            .format("M/DD/YYYY"),
-                          y: member.last_five[4],
-                        },
-                      ]}
-                    />
-                  );
-                })}
-              </VictoryGroup>
-            </VictoryChart>
+            <LineGraph
+              width={1000}
+              height={280}
+              data={group.members}></LineGraph>
           </CardContent>
         </Card>
       </div>
@@ -244,119 +176,16 @@ const CompRunning: React.FC<Props> = props => {
         )}
         {tabNum === 1 && (
           <div className="mobile-graphs">
-            <VictoryChart width={400} height={400}>
-              <VictoryLabel
-                style={{ fontSize: 20 }}
-                x={200}
-                y={20}
-                text="My Progress"
-                textAnchor="middle"
-              />
-              <VictoryGroup
-                style={{ data: { strokeWidth: 3, fillOpacity: 0.2 } }}>
-                <VictoryArea
-                  style={{
-                    data: {
-                      fill: graphColorSelf,
-                      stroke: graphColorSelf,
-                    },
-                  }}
-                  data={[
-                    {
-                      x: moment()
-                        .subtract(5, "days")
-                        .format("M/DD/YYYY"),
-                      y: self.last_five[0],
-                    },
-                    {
-                      x: moment()
-                        .subtract(4, "days")
-                        .format("M/DD/YYYY"),
-                      y: self.last_five[1],
-                    },
-                    {
-                      x: moment()
-                        .subtract(3, "days")
-                        .format("M/DD/YYYY"),
-                      y: self.last_five[2],
-                    },
-                    {
-                      x: moment()
-                        .subtract(2, "days")
-                        .format("M/DD/YYYY"),
-                      y: self.last_five[3],
-                    },
-                    {
-                      x: moment()
-                        .subtract(1, "days")
-                        .format("M/DD/YYYY"),
-                      y: self.last_five[4],
-                    },
-                  ]}
-                />
-              </VictoryGroup>
-            </VictoryChart>
-            <VictoryChart width={400} height={400}>
-              <VictoryLabel
-                style={{ fontSize: 20 }}
-                x={200}
-                y={20}
-                text="Everyone"
-                textAnchor="middle"
-              />
-              <VictoryGroup
-                style={{ data: { strokeWidth: 3, fillOpacity: 0.2 } }}
-                colorScale={graphColors}>
-                {group.members.map((member: any, index: number) => {
-                  return (
-                    <VictoryArea
-                      key={index}
-                      style={{
-                        data:
-                          member.fname === state.fname
-                            ? {
-                                fill: graphColorSelf,
-                                stroke: graphColorSelf,
-                              }
-                            : {},
-                      }}
-                      data={[
-                        {
-                          x: moment()
-                            .subtract(5, "days")
-                            .format("M/DD/YYYY"),
-                          y: member.last_five[0],
-                        },
-                        {
-                          x: moment()
-                            .subtract(4, "days")
-                            .format("M/DD/YYYY"),
-                          y: member.last_five[1],
-                        },
-                        {
-                          x: moment()
-                            .subtract(3, "days")
-                            .format("M/DD/YYYY"),
-                          y: member.last_five[2],
-                        },
-                        {
-                          x: moment()
-                            .subtract(2, "days")
-                            .format("M/DD/YYYY"),
-                          y: member.last_five[3],
-                        },
-                        {
-                          x: moment()
-                            .subtract(1, "days")
-                            .format("M/DD/YYYY"),
-                          y: member.last_five[4],
-                        },
-                      ]}
-                    />
-                  );
-                })}
-              </VictoryGroup>
-            </VictoryChart>
+            <LineGraph
+              width={400}
+              height={400}
+              data={[self]}
+              label="My Progress"></LineGraph>
+            <LineGraph
+              width={400}
+              height={400}
+              data={group.members}
+              label="Everyone"></LineGraph>
           </div>
         )}
         {tabNum === 2 && <BeforeStart group={group}></BeforeStart>}
