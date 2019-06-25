@@ -1,20 +1,20 @@
 import React, { useState, useContext } from "react";
 import { CompRunningWrapper } from "./CompRunningStyles";
-import { makeStyles } from "@material-ui/core/styles";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
-import Divider from "@material-ui/core/Divider";
-import AppBar from "@material-ui/core/AppBar";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
-import Card from "@material-ui/core/Card";
 import { BeforeStart } from "./BeforeStart";
-import { VictoryLabel, VictoryPie } from "victory";
-import moment from "moment";
 import { UserContext } from "GlobalContext/UserContext";
-import { CardHeader, CardContent, Typography } from "@material-ui/core";
+import {
+  CardHeader,
+  CardContent,
+  Typography,
+  AppBar,
+  Tabs,
+  Tab,
+  Card,
+  makeStyles,
+} from "@material-ui/core";
 import { LineGraph } from "components/Graphs/LineGraph";
+import { PieGraph } from "components/Graphs/PieGraph";
+import { Rankings } from "components/Rankings/Rankings";
 
 const useStyles = makeStyles(theme => ({
   appBar: {
@@ -34,17 +34,10 @@ const CompRunning: React.FC<Props> = props => {
   const STATS = "STATS";
   const INFO = "INFO";
   const [tabNum, setTabNum] = useState(0);
-  group.members.sort((a: any, b: any) =>
-    a.progress > b.progress ? -1 : b.progress > a.progress ? 1 : 0,
-  );
+
   const self = group.members.find(
     (member: { fname: string }) => member.fname === state.fname,
   );
-  const startDate = moment(group.startDate, "M/DD/YYYY");
-  const endDate = moment(group.endDate, "M/DD/YYYY");
-  const today = moment(moment().format("M/DD/YYYY"), "M/DD/YYYY");
-  const daysLeft = endDate.diff(today, "days") + 1;
-  const daysPast = today.diff(startDate, "days");
   return (
     <CompRunningWrapper>
       <div className="desktop-view">
@@ -67,48 +60,14 @@ const CompRunning: React.FC<Props> = props => {
             style={{ maxHeight: 350, overflow: "auto" }}>
             <CardHeader title="Rankings"></CardHeader>
             <CardContent>
-              <List>
-                {group.members.map((member: any, index: number) => {
-                  return (
-                    <div key={index}>
-                      <ListItem className="ranking">
-                        <ListItemText>{`${index + 1}. ${member.fname} ${
-                          member.lname
-                        }`}</ListItemText>
-                        <ListItemText className="ranking-hrs">{`${member.progress} Hrs`}</ListItemText>
-                      </ListItem>
-                      <Divider></Divider>
-                    </div>
-                  );
-                })}
-              </List>
+              <Rankings data={group.members}></Rankings>
             </CardContent>
           </Card>
           <Card className="card time">
             <CardHeader title="Time Left"></CardHeader>
 
             <CardContent>
-              <svg viewBox="0 0 400 400">
-                <VictoryPie
-                  standalone={false}
-                  width={400}
-                  height={400}
-                  data={[
-                    { label: "", y: daysPast },
-                    { label: "", y: daysLeft },
-                  ]}
-                  colorScale={"blue"}
-                  innerRadius={100}
-                  labels={() => ""}
-                />
-                <VictoryLabel
-                  textAnchor="middle"
-                  style={{ fontSize: 40, fill: "#3f51b5" }}
-                  x={200}
-                  y={200}
-                  text={`${daysLeft} ` + (daysLeft === 1 ? "day" : "days")}
-                />
-              </svg>
+              <PieGraph width={400} height={400} group={group}></PieGraph>
             </CardContent>
           </Card>
 
@@ -157,21 +116,7 @@ const CompRunning: React.FC<Props> = props => {
         </AppBar>
         {tabNum === 0 && (
           <div>
-            <List>
-              {group.members.map((member: any, index: number) => {
-                return (
-                  <div key={index}>
-                    <ListItem className="ranking">
-                      <ListItemText>{`${index + 1}. ${member.fname} ${
-                        member.lname
-                      }`}</ListItemText>
-                      <ListItemText className="ranking-hrs">{`${member.progress} Hrs`}</ListItemText>
-                    </ListItem>
-                    <Divider></Divider>
-                  </div>
-                );
-              })}
-            </List>
+            <Rankings data={group.members}></Rankings>
           </div>
         )}
         {tabNum === 1 && (
