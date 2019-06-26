@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { Route, Link } from "react-router-dom";
 
 import { DashboardStart } from "./sections/dashboard-start/DashboardStart";
@@ -7,6 +7,8 @@ import { DashboardNewGroup } from "./sections/dashboard-new-group/DashboardNewGr
 import { DashboardAdmin } from "./sections/dashboard-admin/DashboardAdmin";
 import { DashboardNewComp } from "./sections/dashboard-new-comp/DashboardNewComp";
 import { HandleGroupView } from "./sections/HandleGroupView";
+import axios, { AxiosResponse } from "axios";
+import Auth from "Auth/Auth.js";
 
 import { DashboardWrapper } from "./DashboardStyles";
 import AppBar from "@material-ui/core/AppBar";
@@ -46,7 +48,13 @@ const useStyles = makeStyles(theme => ({
 	width: "auto",
     },
 }));
+
 interface Props {}
+interface UserInfo {
+    name: string;
+    nickname: string;
+}
+
 const Dashboard: React.SFC<Props> = () => {
     const state: {
 	fname: string;
@@ -57,20 +65,27 @@ const Dashboard: React.SFC<Props> = () => {
     const classes = useStyles();
     const [isMenuDrawerOpen, setIsMenuDrawerOpen] = useState(false);
     const [isPlusDrawerOpen, setIsPlusDrawerOpen] = useState(false);
+    //    const [userInfoState, setState] = useState({} as UserInfo);
+
+    /* useEffect(() => {
+       const auth = new Auth();
+       auth.getUserInfo(setState);
+     * }, []);*/
+    
     return (
 	<DashboardWrapper>
 	    <Route exact path="/dashboard/start" component={DashboardStart} />
 	    <Route
-		exact
-		path="/dashboard/join-group"
-		component={DashboardJoinGroup}
+	    exact
+	    path="/dashboard/join-group"
+	    component={DashboardJoinGroup}
 	    />
 	    <Route exact path="/dashboard/new-group" component={DashboardNewGroup} />
 	    <Route exact path="/dashboard/admin" component={DashboardAdmin} />
 	    <Route
-		exact
-		path="/dashboard/group/:groupId"
-		component={HandleGroupView}
+	    exact
+	    path="/dashboard/group/:groupId"
+	    component={HandleGroupView}
 	    />
 	    <Route
 		exact
@@ -85,6 +100,7 @@ const Dashboard: React.SFC<Props> = () => {
 		<div className={classes.fullList}>
 		    <header>
 			{/* TODO: Bring in data for name and email of user */}
+                        {/* <h1>{userInfoState.name}</h1> */}
 			<h2>{`${state.fname} ${state.lname}`}</h2>
 			<p>{`${state.email}`}</p>
 		    </header>
