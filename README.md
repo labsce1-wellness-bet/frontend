@@ -1,9 +1,6 @@
 # frontened
 
-https://trello.com/b/PdacT58N/labsce1-wellness-bet-exercise-and-sleep
-https://docs.google.com/document/d/1bgKZY6Xe_nTrXnWQKYha-q_pg9oCcakQLzXUltCpkrg/edit
-https://projects.invisionapp.com/share/EYRNKTZCJUZ#/screens/359267384
-https://projects.invisionapp.com/share/A8RNKKYD4HV#/screens
+
 
 🚫 Note: All lines that start with 🚫 are instructions and should be deleted before this is posted to your portfolio. This is intended to be a guideline, feel free to add your own flare to it.
 
@@ -11,15 +8,15 @@ https://projects.invisionapp.com/share/A8RNKKYD4HV#/screens
 
 🚫 Each student has a required minimum number of meaningful PRs each week per the rubric. Contributing to docs does NOT count as a PR to meet your weekly requirements.
 
-# 1️⃣ Title of project goes here
+# 1️⃣ Wellness Bet Excercise
 
-1️⃣ You can find the deployed project at [🚫URL NAME GOES HERE](🚫copy and paste URL here).
+1️⃣ You can find the deployed project at [Wellness BET](🚫https://wellness-bet.netlify.com/).
 
 ## 4️⃣ Contributors
 
 🚫Add contributor info below, make sure add images and edit the social links for each member. Add to or delete these place-holders as needed
 
-|                                       [Student 1](https://github.com/)                                        |                                       [Student 2](https://github.com/)                                        |                                       [Student 3](https://github.com/)                                        |                                       [Student 4](https://github.com/)                                        |                                       [Student 5](https://github.com/)                                        |
+|                                       [Akshay Gadkari - Software Engineer](https://github.com/akshay.gadkari)                                        |                                       [Simon Davis - Software Engineer](https://github.com/skidragon)                                        |                                       [Boniface Makau - Software Engineer](https://github.com/bmakau)                                        |                                       [Caleb Kirkwood - Software Engineer](https://github.com/ckirkwood94)                                        |                                       [Jonathan Holloway - Team Lead](https://github.com/codejoncode)                                        |
 | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: |
 |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/)                       |
 |                 [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/)                 |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/honda0306)             |           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Mister-Corn)            |          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/NandoTheessen)           |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/wvandolah)             |
@@ -40,11 +37,12 @@ https://projects.invisionapp.com/share/A8RNKKYD4HV#/screens
 
 ## Project Overview
 
-1️⃣ [Trello Board](🚫add link to trello board here)
+1️⃣ [Trello Board](https://trello.com/b/PdacT58N/labsce1-wellness-bet-exercise-and-sleep)
 
-1️⃣ [Product Canvas](🚫add link to product canvas here)
+1️⃣ [Product Canvas](https://docs.google.com/document/d/1bgKZY6Xe_nTrXnWQKYha-q_pg9oCcakQLzXUltCpkrg/edit?usp=sharing)
 
-1️⃣ [UX Design files](🚫add link to design files here) - 🚫 delete if not applicable
+1️⃣ [UX Design files mobile](https://projects.invisionapp.com/share/EYRNKTZCJUZ#/screens/359267384) 
+1️⃣ [UX Design files Desktop](https://projects.invisionapp.com/share/A8RNKKYD4HV#/screens) 
 
 🚫 Replace lorem ipsum with a description of your project
 
@@ -65,7 +63,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
 
 ### Front end built using:
 
-#### _Front end framework goes here_
+#### _React & Webpack _
 
 🚫 Why did you choose this framework?
 
@@ -76,13 +74,13 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
 
 🚫List the rest of the front end features and libraries in the same format as the framework above.
 
-#### Front end deployed to `🚫insert service here`
+#### Front end deployed to `Netlify`
 
-#### [Back end](🚫link to back end repo here) built using:
+#### [Back end](https://github.com/labsce1-wellness-bet/backend) built using:
 
 #### 🚫 back end framework goes here
 
--    point one
+-    Java
 -    point two
 -    point three
 
