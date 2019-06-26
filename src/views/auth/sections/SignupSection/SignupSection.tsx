@@ -65,7 +65,7 @@ const SignupSection = () => {
 		    </Fab>
 		</CreateAccountForm>
 		<FooterContent>
-		    <StyledLink to="/">{"Terms & Conditions"}</StyledLink>
+		    <StyledLink to="/">{"Return to Homepage"}</StyledLink>
 		</FooterContent>
 	    </SignupContent>
 	</SignupWrapper>
