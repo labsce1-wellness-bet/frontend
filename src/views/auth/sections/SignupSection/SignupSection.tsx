@@ -21,11 +21,17 @@ const SignupSection = () => {
     const setText = (e: any) => {
 	setValues({ ...values, [e.target.name]: e.target.value });
     };
+
     const onSignup = () => {
 	console.log(values);
 	auth0.signup(values);
     };
 
+    const onLogin = () => {
+	console.log(values);
+	auth0.login(values);
+    };
+    
     return (
 	<SignupWrapper>
 	    <SignupContent>
@@ -34,25 +40,26 @@ const SignupSection = () => {
 		</HeaderContent>
 		<CreateAccountForm onSubmit={(e:any) => {
 			e.preventDefault();
-			onSignup()
+			onSignup();
+			onLogin();
 		} }>
 		    <RoundedInputBox
-		    icon={<Email color="inherit" />}
-		    value={values.email}
-		    type="text"
-		    name="email"
-		    onChange={setText}
-		    placeholder={"Email"}
-		    className="input-box"
+			icon={<Email color="inherit" />}
+			value={values.email}
+			type="text"
+			name="email"
+			onChange={setText}
+			placeholder={"Email"}
+			className="input-box"
 		    />
 		    <RoundedInputBox
-		    icon={<Lock color="inherit" />}
-		    value={values.password}
-		    type="password"
-		    name="password"
-		    onChange={setText}
-		    placeholder={"Password"}
-		    className="input-box"
+			icon={<Lock color="inherit" />}
+			value={values.password}
+			type="password"
+			name="password"
+			onChange={setText}
+			placeholder={"Password"}
+			className="input-box"
 		    />
 		    <Fab
 			className="submit-btn"
