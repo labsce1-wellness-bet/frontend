@@ -65,7 +65,7 @@ const Dashboard: React.SFC<Props> = () => {
     const classes = useStyles();
     const [isMenuDrawerOpen, setIsMenuDrawerOpen] = useState(false);
     const [isPlusDrawerOpen, setIsPlusDrawerOpen] = useState(false);
-    //    const [userInfoState, setState] = useState({} as UserInfo);
+    //const [userInfoState, setState] = useState({} as UserInfo);
 
     /* useEffect(() => {
        const auth = new Auth();
@@ -74,6 +74,7 @@ const Dashboard: React.SFC<Props> = () => {
     
     return (
 	<DashboardWrapper>
+	    {/* <h1>{userInfoState.name}</h1> */}
 	    <Route exact path="/dashboard/start" component={DashboardStart} />
 	    <Route
 	    exact
