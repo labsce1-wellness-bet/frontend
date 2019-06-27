@@ -1,4 +1,10 @@
 import auth0 from "auth0-js";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+/* import { css } from 'glamor';*/
+toast.configure({
+    hideProgressBar: true
+})
 
 export default class Auth {
     auth0 = new auth0.WebAuth({
@@ -23,7 +29,8 @@ export default class Auth {
 	    },
 	    (err, signupResult) => {
 		if (err) {
-		    console.log("error", err);
+		    console.log("SIGNUP ERROR", err);
+		    toast(`${err.description}`);
 		    if (errorCb) {
 			errorCb();
 		    }
@@ -36,6 +43,7 @@ export default class Auth {
 	    }
 	);
     }
+    
     login(loginParams, successCb, errorCb) {
 	this.auth0.login(
 	    {
@@ -49,8 +57,10 @@ export default class Auth {
 		    if (errorCb) {
 			errorCb();
 		    }
-		    console.log(err);
-		    throw new Error("Problem with logging in");
+		    console.log("LOGIN ERROR", err);
+		    toast(`${err.description}`);
+		    return err;
+		    /* throw new Error("Problem with logging in");*/
 		}
 		if (successCb) {
 		    successCb();
@@ -59,6 +69,7 @@ export default class Auth {
 	    }
 	);
     }
+    
     getUserInfo(successCb, errorCb) {
 	this.auth0.parseHash({ hash: window.location.hash }, (err, authResult) => {
 	    if (err) {
