@@ -30,6 +30,10 @@ const CompEnd: React.FC<Props> = props => {
     (member: { fname: string }) => member.fname === state.fname,
   );
 
+  group.members.sort((a: any, b: any) =>
+    a.progress > b.progress ? -1 : b.progress > a.progress ? 1 : 0,
+  );
+
   return (
     <CompEndWrapper>
       <div className="desktop">
