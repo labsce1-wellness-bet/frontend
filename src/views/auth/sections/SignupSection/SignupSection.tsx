@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
     SignupWrapper,
     SignupContent,
@@ -10,17 +10,29 @@ import {
 import RoundedInputBox from "components/RoundedInputBox/RoundedInputBox";
 import { Lock, Email } from "@material-ui/icons";
 import Fab from "@material-ui/core/Fab";
+
+import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import Snackbar from '@material-ui/core/Snackbar';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 import Auth from "Auth/Auth.js"
+
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+toast.configure()
 
 const SignupSection = () => {
     const [values, setValues] = useState({
 	email: "",
 	password: ""
     });
+    
     const auth0 = new Auth();
     const setText = (e: any) => {
 	setValues({ ...values, [e.target.name]: e.target.value });
     };
+
     const onSignup = () => {
 	console.log(values);
 	auth0.signup(values);
@@ -34,7 +46,7 @@ const SignupSection = () => {
 		</HeaderContent>
 		<CreateAccountForm onSubmit={(e:any) => {
 			e.preventDefault();
-			onSignup()
+			onSignup();
 		} }>
 		    <RoundedInputBox
 		    icon={<Email color="inherit" />}
@@ -65,7 +77,7 @@ const SignupSection = () => {
 		    </Fab>
 		</CreateAccountForm>
 		<FooterContent>
-		    <StyledLink to="/">{"Terms & Conditions"}</StyledLink>
+		    <StyledLink to="/">{"Return to Homepage"}</StyledLink>
 		</FooterContent>
 	    </SignupContent>
 	</SignupWrapper>
