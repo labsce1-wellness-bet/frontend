@@ -12,15 +12,17 @@ import { Lock, Email } from "@material-ui/icons";
 import Fab from "@material-ui/core/Fab";
 
 // import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
-import Button from "@material-ui/core/Button";
-import Snackbar from "@material-ui/core/Snackbar";
-import IconButton from "@material-ui/core/IconButton";
-import CloseIcon from "@material-ui/icons/Close";
+//import Button from "@material-ui/core/Button";
+//import Snackbar from "@material-ui/core/Snackbar";
+//import IconButton from "@material-ui/core/IconButton";
+//import CloseIcon from "@material-ui/icons/Close";
 import Auth from "Auth/Auth.js";
 
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-toast.configure();
+//import { toast } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
+// toast.configure({
+//     hideProgressBar: true,
+// });
 
 const SignupSection = () => {
   const [values, setValues] = useState({
