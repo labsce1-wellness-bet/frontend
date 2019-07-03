@@ -8,6 +8,11 @@ import { DashboardAdmin } from "./sections/dashboard-admin/DashboardAdmin";
 import { DashboardNewComp } from "./sections/dashboard-new-comp/DashboardNewComp";
 import { HandleGroupView } from "./sections/HandleGroupView";
 
+import axios, { AxiosResponse } from "axios";
+import Auth from "Auth/Auth.js";
+import { useGroupContextValue } from "GlobalContext/GroupContext";
+
+
 import { DashboardWrapper } from "./DashboardStyles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -25,6 +30,7 @@ import {
 } from "@material-ui/core";
 import { Settings } from "@material-ui/icons";
 import { UserContext } from "GlobalContext/UserContext";
+import { _UserContext, useUserContextValue } from "GlobalContext/_UserContext";
 
 const useStyles = makeStyles(theme => ({
   appBar: {
@@ -54,18 +60,49 @@ interface UserInfo {
 }
 
 const Dashboard: React.SFC<Props> = () => {
-  const state: {
-    fname: string;
-    lname: string;
-    email: string;
-    groups: any;
-  } = useContext(UserContext);
+  const [userState, userDispatch] = useUserContextValue();
+  const [groupState, groupDispatch] = useGroupContextValue();
+
+  console.log("dashboard", userState);
   const classes = useStyles();
   const [isMenuDrawerOpen, setIsMenuDrawerOpen] = useState(false);
   const [isPlusDrawerOpen, setIsPlusDrawerOpen] = useState(false);
+  const baseURL = process.env.REACT_APP_BACKEND_URL;
+  //const [userInfoState, setState] = useState({} as UserInfo);
 
+  /* useEffect(() => {
+       const auth = new Auth();
+       auth.getUserInfo(setState);
+     * }, []);*/
+
+  const getAllGroupsInfo = () => {
+    let headers = {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${window.localStorage.access_token}`,
+    };
+    const promise = axios.get(`${baseURL}api/group/all`, {
+      headers: headers,
+    });
+    console.log("getAllGroupsInfo", `${baseURL}api/group/all`);
+
+    promise
+      .then(response => {
+        console.log("response", response.data);
+        groupDispatch({ type: "getAllGroupsInfo", payload: response.data });
+      })
+      .catch(error => {
+        groupDispatch({ type: "error", payload: error });
+      });
+  };
+
+  useEffect(() => {
+    getAllGroupsInfo();
+  }, []);
+
+  console.log(groupState.groups);
   return (
     <DashboardWrapper>
+      {/* <h1>{userInfoState.name}</h1> */}
       <Route exact path="/dashboard/start" component={DashboardStart} />
       <Route
         exact
@@ -92,16 +129,17 @@ const Dashboard: React.SFC<Props> = () => {
         <div className={classes.fullList}>
           <header>
             {/* TODO: Bring in data for name and email of user */}
-            <h2>{`${state.fname} ${state.lname}`}</h2>
-            <p>{`${state.email}`}</p>
+            {/* <h1>{userInfoState.name}</h1> */}
+            <h2>{`${userState.nickname}`}</h2>
+            <p>{`${userState.email}`}</p>
           </header>
           <Divider />
           <List>
-            {state.groups.length === 0 ? (
+            {groupState.groups.length === 0 ? (
               <h5>No groups</h5>
             ) : (
               // @ts-ignore
-              state.groups.map(group => {
+              groupState.groups.map(group => {
                 return (
                   <Link
                     to={`/dashboard/group/${group.groupId}`}
@@ -109,6 +147,14 @@ const Dashboard: React.SFC<Props> = () => {
                 );
               })
             )}
+            {/* <Link to="/dashboard/groups">
+			    <ListItem button>
+			    <ListItemIcon>
+			    <Group />
+			    </ListItemIcon>
+			    <ListItemText>Groups</ListItemText>
+			    </ListItem>
+			    </Link> */}
             <Link to="/dashboard/settings">
               <ListItem button>
                 <ListItemIcon>

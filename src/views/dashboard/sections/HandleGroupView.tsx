@@ -14,7 +14,7 @@ const HandleGroupView: React.FC<Props> = props => {
   );
 
   if (state.userId === group.admin) {
-    return <DashboardAdmin></DashboardAdmin>;
+    return <DashboardAdmin group={group}></DashboardAdmin>;
   } else {
     return <DashboardUser group={group}></DashboardUser>;
   }
