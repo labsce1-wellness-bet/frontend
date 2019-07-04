@@ -1,42 +1,26 @@
 import React, { useState } from "react";
-import { DashboardAdminWrapper } from "./DashboardAdminStyles";
-import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
+import { BeforeStart } from "./BeforeStart";
+import { CompEnd } from "./CompEnd";
+import { CompRunning } from "./CompRunning";
+import moment from "moment";
 
-const useStyles = makeStyles(theme => ({
-  appBar: {
-    top: "auto",
-    bottom: 0,
-  },
-}));
+interface Props {
+  group: any;
+}
 
-interface Props {}
-const DashboardAdmin: React.SFC<Props> = () => {
-  //@ts-ignore
-  const classes = useStyles();
-  const INFO = "INFO";
-  const PENDING = "PENDING";
-  const APPROVED = "APPROVED";
-  const [tabNum, setTabNum] = useState(0);
+const DashboardAdmin: React.SFC<Props> = props => {
+  const curr_date = moment().format("M/DD/YYYY");
+  const start_date = props.group.startDate;
+  const end_date = props.group.endDate;
+  const isStarted = curr_date >= start_date;
+  const isEnded = curr_date > end_date;
 
-  return (
-    <DashboardAdminWrapper>
-      <AppBar position="sticky" color="default" className={classes.appBar}>
-        <Tabs
-          value={tabNum}
-          onChange={(e: any, index: number) => setTabNum(index)}
-          indicatorColor="primary"
-          textColor="primary"
-          variant="fullWidth">
-          <Tab label={INFO} />
-          <Tab label={PENDING} />
-          <Tab label={APPROVED} />
-        </Tabs>
-      </AppBar>
-    </DashboardAdminWrapper>
-  );
+  if (isEnded) {
+    return <CompEnd group={props.group}></CompEnd>;
+  } else if (!isStarted) {
+    return <BeforeStart group={props.group}></BeforeStart>;
+  }
+  return <CompRunning group={props.group}></CompRunning>;
 };
 
 export { DashboardAdmin };
