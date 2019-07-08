@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Link } from "react-router-dom";
 
 import { DashboardStart } from "./sections/dashboard-start/DashboardStart";
@@ -8,10 +8,9 @@ import { DashboardAdmin } from "./sections/dashboard-admin/DashboardAdmin";
 import { DashboardNewComp } from "./sections/dashboard-new-comp/DashboardNewComp";
 import { HandleGroupView } from "./sections/HandleGroupView";
 
-import axios, { AxiosResponse } from "axios";
-import Auth from "Auth/Auth.js";
+import axios from "axios";
+//import Auth from "Auth/Auth.js";
 import { useGroupContextValue } from "GlobalContext/GroupContext";
-
 
 import { DashboardWrapper } from "./DashboardStyles";
 import AppBar from "@material-ui/core/AppBar";
