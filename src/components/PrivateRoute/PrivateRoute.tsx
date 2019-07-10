@@ -16,7 +16,6 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({
 }: any) => {
   // const global: { isAuthenticated?: boolean } = useContext(GlobalContext);
   const [state, dispatch] = useGlobalContextValue();
-  console.log("PrivateRoute", state);
   return (
     <Route
       {...rest}
