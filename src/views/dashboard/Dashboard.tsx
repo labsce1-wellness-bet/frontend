@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Link } from "react-router-dom";
 
 import { DashboardStart } from "./sections/dashboard-start/DashboardStart";
@@ -8,8 +8,8 @@ import { DashboardAdmin } from "./sections/dashboard-admin/DashboardAdmin";
 import { DashboardNewComp } from "./sections/dashboard-new-comp/DashboardNewComp";
 import { HandleGroupView } from "./sections/HandleGroupView";
 
-import axios, { AxiosResponse } from "axios";
-import Auth from "Auth/Auth.js";
+import axios from "axios";
+//import Auth from "Auth/Auth.js";
 import { useGroupContextValue } from "GlobalContext/GroupContext";
 
 import { DashboardWrapper } from "./DashboardStyles";
@@ -28,8 +28,8 @@ import {
   Divider,
 } from "@material-ui/core";
 import { Settings } from "@material-ui/icons";
-import { UserContext } from "GlobalContext/UserContext";
-import { _UserContext, useUserContextValue } from "GlobalContext/_UserContext";
+//import { UserContext } from "GlobalContext/UserContext";
+import { useUserContextValue } from "GlobalContext/_UserContext";
 
 const useStyles = makeStyles(theme => ({
   appBar: {
@@ -59,7 +59,7 @@ interface UserInfo {
 }
 
 const Dashboard: React.SFC<Props> = () => {
-  const [userState, userDispatch] = useUserContextValue();
+  const [userState] = useUserContextValue();
   const [groupState, groupDispatch] = useGroupContextValue();
 
   console.log("dashboard", userState);

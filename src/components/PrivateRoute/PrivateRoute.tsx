@@ -1,7 +1,7 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import { Route, Redirect } from "react-router";
 import {
-  GlobalContext,
+  //GlobalContext,
   useGlobalContextValue,
 } from "GlobalContext/GlobalContext";
 import { useUserContextValue } from "GlobalContext/_UserContext";
@@ -16,8 +16,10 @@ const PrivateRoute: React.FC<Props> = ({
   component: Component,
   ...rest
 }: any) => {
-  const [state, dispatch] = useGlobalContextValue();
-  const [userState, userDispatch] = useUserContextValue();
+
+  // const global: { isAuthenticated?: boolean } = useContext(GlobalContext);
+  const [state] = useGlobalContextValue();
+  console.log("PrivateRoute", state);
 
   return (
     <Route
