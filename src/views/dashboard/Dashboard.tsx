@@ -28,8 +28,8 @@ import {
   Divider,
 } from "@material-ui/core";
 import { Settings } from "@material-ui/icons";
-import { UserContext } from "GlobalContext/UserContext";
-import { _UserContext, useUserContextValue } from "GlobalContext/_UserContext";
+//import { UserContext } from "GlobalContext/UserContext";
+import { useUserContextValue } from "GlobalContext/_UserContext";
 
 const useStyles = makeStyles(theme => ({
   appBar: {
@@ -59,7 +59,7 @@ interface UserInfo {
 }
 
 const Dashboard: React.SFC<Props> = () => {
-  const [userState, userDispatch] = useUserContextValue();
+  const [userState] = useUserContextValue();
   const [groupState, groupDispatch] = useGroupContextValue();
 
   console.log("dashboard", userState);

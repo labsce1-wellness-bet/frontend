@@ -1,19 +1,19 @@
-import React, { useContext, useState, useEffect } from "react";
-import { Route, Redirect } from "react-router-dom";
+import React from "react";
+import { Route } from "react-router-dom";
 import PrivateRoute from "components/PrivateRoute/PrivateRoute";
 import Callback from "views/callback/Callback";
 import Test from "views/test/Test";
 import AuthPage from "views/auth/Auth";
 import Fitbit from "views/fitbit/Fitbit";
 import Dashboard from "views/dashboard/Dashboard";
-import Auth from "./Auth/Auth";
+//import Auth from "./Auth/Auth";
 import {
   GlobalContextProvider,
-  useGlobalContextValue,
+  //useGlobalContextValue,
 } from "./GlobalContext/GlobalContext";
 import {
-  _UserContextProvider,
-  useUserContextValue,
+  UserContextProvider,
+  //useUserContextValue,
 } from "GlobalContext/_UserContext";
 import { GroupContextProvider } from "GlobalContext/GroupContext";
 
@@ -40,7 +40,7 @@ const App: React.FC = props => {
   return (
     <div className="App">
       <GlobalContextProvider>
-        <_UserContextProvider>
+        <UserContextProvider>
           <GroupContextProvider>
             <Route exact path="/" component={AuthPage} />
             <Route exact path="/callback" component={Callback} />
@@ -48,7 +48,7 @@ const App: React.FC = props => {
             <PrivateRoute path="/dashboard" component={Dashboard} />
             <PrivateRoute path="/fitbit" component={Fitbit} />
           </GroupContextProvider>
-        </_UserContextProvider>
+        </UserContextProvider>
       </GlobalContextProvider>
     </div>
   );
