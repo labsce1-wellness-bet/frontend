@@ -20,14 +20,12 @@ const Callback: React.SFC<Props> = props => {
 
   useEffect(() => {
     const auth0 = new Auth();
-    auth0.getUserInfo(handleGetUserInfo);
-    if (window.localStorage.access_token) {
-      dispatch({ type: "isAuth" });
+    dispatch({ type: "isAuth" });
+    if (state.isAuthenticated) {
+      auth0.getUserInfo(handleGetUserInfo);
       props.history.push("/dashboard/start");
-    } else {
-      props.history.push("/");
     }
-  }, []);
+  }, [state.isAuthenticated]);
   return <div></div>;
 };
 

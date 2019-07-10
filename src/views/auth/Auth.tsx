@@ -9,9 +9,10 @@ export interface AuthProps {
   location: {
     search: string;
   };
+  history: any;
 }
 
-const Auth: React.SFC<AuthProps> = ({ location }) => {
+const Auth: React.SFC<AuthProps> = ({ location, history }) => {
   let params = new URLSearchParams(location.search);
   const SIGNUP = "signup";
   return (
@@ -25,7 +26,7 @@ const Auth: React.SFC<AuthProps> = ({ location }) => {
       {params.get("view") === SIGNUP ? (
         <SignupSection />
       ) : (
-        <LoginSection />
+        <LoginSection history={history} />
       )}
     </AuthWrapper>
   );
