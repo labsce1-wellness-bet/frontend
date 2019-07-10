@@ -12,7 +12,6 @@ import axios, { AxiosResponse } from "axios";
 import Auth from "Auth/Auth.js";
 import { useGroupContextValue } from "GlobalContext/GroupContext";
 
-
 import { DashboardWrapper } from "./DashboardStyles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -99,7 +98,6 @@ const Dashboard: React.SFC<Props> = () => {
     getAllGroupsInfo();
   }, []);
 
-  console.log(groupState.groups);
   return (
     <DashboardWrapper>
       {/* <h1>{userInfoState.name}</h1> */}
