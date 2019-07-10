@@ -98,7 +98,6 @@ const Dashboard: React.SFC<Props> = () => {
     getAllGroupsInfo();
   }, []);
 
-  console.log(groupState.groups);
   return (
     <DashboardWrapper>
       {/* <h1>{userInfoState.name}</h1> */}

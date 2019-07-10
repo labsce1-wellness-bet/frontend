@@ -13,7 +13,7 @@ import { Lock, Email } from "@material-ui/icons";
 import Fab from "@material-ui/core/Fab";
 import Auth from "Auth/Auth.js";
 
-const LoginSection = () => {
+const LoginSection = (history: any) => {
   const [values, setValues] = useState({
     email: "",
     password: "",
