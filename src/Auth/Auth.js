@@ -29,12 +29,19 @@ export default class Auth {
       (err, signupResult) => {
         if (err) {
           console.log("SIGNUP ERROR", err);
-          toast(`${err.description}`);
+          if (err.policy) {
+            toast(`${err.policy}`);
+          } else {
+            toast(`${err.description}`);
+          }
+          // toast(`${err.description}`);
           if (errorCb) {
             errorCb();
           }
+        } else {
+          console.log("result", signupResult);
+          toast("User Created");
         }
-        console.log("result", signupResult);
         if (successCb) {
           console.log("success");
           successCb();
@@ -86,9 +93,7 @@ export default class Auth {
       });
     });
   }
-
-  returnUser(successCb, errorCb) {
-    console.log(window.localStorage.access_token);
+  returnUser(successCb) {
     this.auth0.client.userInfo(
       window.localStorage.access_token,
       (err, user) => {
