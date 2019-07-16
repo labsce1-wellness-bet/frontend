@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { BeforeStart } from "./BeforeStart";
 import { CompEnd } from "./CompEnd";
 import { CompRunning } from "./CompRunning";

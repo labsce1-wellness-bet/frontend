@@ -1,5 +1,5 @@
 import React, { useReducer, useContext, createContext } from "react";
-export const _UserContext = createContext();
+export const UserContext = createContext();
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -27,10 +27,10 @@ const initialState = {
   groups: [],
 };
 
-export const _UserContextProvider = ({ children }) => (
-  <_UserContext.Provider value={useReducer(reducer, initialState)}>
+export const UserContextProvider = ({ children }) => (
+  <UserContext.Provider value={useReducer(reducer, initialState)}>
     {children}
-  </_UserContext.Provider>
+  </UserContext.Provider>
 );
 
-export const useUserContextValue = () => useContext(_UserContext);
+export const useUserContextValue = () => useContext(UserContext);

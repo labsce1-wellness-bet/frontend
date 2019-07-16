@@ -8,6 +8,11 @@ const reducer = (state, action) => {
         ...state,
         isAuthenticated: true,
       };
+    case "NOT_AUTH":
+      return {
+        ...state,
+        isAuthenticated: false,
+      };
 
     default:
       return state;
