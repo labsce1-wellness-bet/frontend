@@ -4,12 +4,36 @@ import newGroupReducer from "./newGroupReducer";
 import TextField from "@material-ui/core/TextField";
 import { Button } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
+import axios from "axios";
+import jss from "jss";
 
+//onSubmit ={(e: { preventDefault: () => void }) =>{e.preventDefault(); addGroup(groupName)}}
 export interface Props {}
 
 const DashboardNewGroup: React.SFC<Props> = () => {
   const [state, dispatch] = newGroupReducer();
   const { groupName } = state;
+  const addGroup = async (groupName: any) => {
+    console.log(state, "addgroup");
+
+    try {
+      console.log(groupName, state.groupName);
+      await axios({
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${window.localStorage.access_token}`,
+        },
+        method: "post",
+        url: "http://localhost:5000/api/group",
+        data: { groupName: state.groupName },
+      }).then(data => {
+        console.log(data);
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <DashboardNewGroupWrapper>
       <Typography
@@ -20,7 +44,12 @@ const DashboardNewGroup: React.SFC<Props> = () => {
         gutterBottom={true}>
         New Group
       </Typography>
-      <Form className="form">
+      <Form
+        className="form"
+        onSubmit={(e: { preventDefault: () => void }) => {
+          e.preventDefault();
+          addGroup(groupName);
+        }}>
         <TextField
           className="input"
           id="filled-group-name"
@@ -35,7 +64,11 @@ const DashboardNewGroup: React.SFC<Props> = () => {
           variant="filled"
           required={true}
         />
-        <Button variant="contained" color="primary" className="button">
+        <Button
+          variant="contained"
+          type="submit"
+          color="primary"
+          className="button">
           Create New Group
         </Button>
       </Form>
