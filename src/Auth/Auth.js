@@ -86,6 +86,24 @@ export default class Auth {
       });
     });
   }
+
+  returnUser(successCb, errorCb) {
+    console.log(window.localStorage.access_token);
+    this.auth0.client.userInfo(
+      window.localStorage.access_token,
+      (err, user) => {
+        if (err) {
+          window.localStorage.removeItem("access_token");
+          return console.log(err);
+        }
+        if (successCb) {
+          successCb(user);
+        }
+        console.log("USER", user);
+        return user;
+      },
+    );
+  }
 }
 
 // COMMENTS ARE FOR THE DATABASE ACCESS IN AUTH0 SETTINGS
