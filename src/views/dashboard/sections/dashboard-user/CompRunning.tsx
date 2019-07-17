@@ -15,6 +15,7 @@ import {
 import { LineGraph } from "components/Graphs/LineGraph";
 import { PieGraph } from "components/Graphs/PieGraph";
 import { Rankings } from "components/Rankings/Rankings";
+import { TestUserContext } from "GlobalContext/TestUserContext";
 
 const useStyles = makeStyles(theme => ({
   appBar: {
@@ -28,6 +29,7 @@ interface Props {
 }
 const CompRunning: React.FC<Props> = props => {
   const state = useContext(UserContext);
+  const testState = useContext(TestUserContext);
   const group = props.group;
   const classes = useStyles();
   const RANKINGS = "RANKINGS";
@@ -36,8 +38,9 @@ const CompRunning: React.FC<Props> = props => {
   const [tabNum, setTabNum] = useState(0);
 
   const self = group.members.find(
-    (member: { fname: string }) => member.fname === state.fname,
+    (member: { fname: string }) => member.fname === testState.fname,
   );
+
   return (
     <CompRunningWrapper>
       <div className="desktop-view">
