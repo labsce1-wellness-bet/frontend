@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   LoginWrapper,
   LoginContent,
@@ -12,12 +12,20 @@ import RoundedInputBox from "components/RoundedInputBox/RoundedInputBox";
 import { Lock, Email } from "@material-ui/icons";
 import Fab from "@material-ui/core/Fab";
 import Auth from "Auth/Auth.js";
+import { useGlobalContextValue } from "GlobalContext/GlobalContext";
+import { useUserContextValue } from "GlobalContext/UserContext";
 
-const LoginSection = (history: any) => {
+export interface Props {
+  history: any;
+}
+
+const LoginSection = (props: any) => {
   const [values, setValues] = useState({
     email: "",
     password: "",
   });
+  const [state, dispatch] = useGlobalContextValue();
+  const [userState, userDispatch] = useUserContextValue();
   const auth0 = new Auth();
   const setText = (e: any) => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -26,6 +34,18 @@ const LoginSection = (history: any) => {
     console.log("on login function");
     auth0.login(values);
   };
+  const handleGetUserInfo = (user: any) => {
+    userDispatch({ type: "setUserInfo", user });
+  };
+
+  useEffect(() => {
+    if (window.localStorage.access_token) {
+      auth0.returnUser(handleGetUserInfo);
+      dispatch({ type: "isAuth" });
+      props.history.push("/dashboard/start");
+    }
+  }, []);
+
   return (
     <LoginWrapper>
       <LoginContent>

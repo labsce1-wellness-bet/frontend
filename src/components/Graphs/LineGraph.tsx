@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { VictoryChart, VictoryArea, VictoryGroup, VictoryLabel } from "victory";
 import moment from "moment";
-import { UserContext } from "GlobalContext/UserContext";
+import { TestUserContext } from "GlobalContext/TestUserContext";
 
 interface Props {
   width: number;
@@ -11,7 +11,7 @@ interface Props {
 }
 
 const LineGraph: React.FC<Props> = props => {
-  const state = useContext(UserContext);
+  const state = useContext(TestUserContext);
   const graphColorSelf = "green";
   const graphColors = [
     "cyan",

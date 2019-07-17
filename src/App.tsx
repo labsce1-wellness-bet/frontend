@@ -14,7 +14,7 @@ import {
 import {
   UserContextProvider,
   //useUserContextValue,
-} from "GlobalContext/_UserContext";
+} from "GlobalContext/UserContext";
 import { GroupContextProvider } from "GlobalContext/GroupContext";
 
 //The name of the tab

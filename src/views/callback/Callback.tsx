@@ -34,7 +34,7 @@ import {
   useGlobalContextValue,
 } from "GlobalContext/GlobalContext";
 import Auth from "Auth/Auth";
-import { useUserContextValue } from "GlobalContext/_UserContext";
+import { useUserContextValue } from "GlobalContext/UserContext";
 
 export interface Props {
   history: any;
