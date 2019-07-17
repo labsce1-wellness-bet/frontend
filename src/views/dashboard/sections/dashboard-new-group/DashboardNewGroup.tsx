@@ -5,9 +5,11 @@ import TextField from "@material-ui/core/TextField";
 import { Button } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import { useGroupContextValue } from "GlobalContext/GroupContext";
-import axios from "axios";
 import getAllGroupsInfo from "../../Dashboard";
+import axios from "axios";
+import jss from "jss";
 
+//onSubmit ={(e: { preventDefault: () => void }) =>{e.preventDefault(); addGroup(groupName)}}
 export interface Props {}
 
 const DashboardNewGroup: React.SFC<Props> = () => {
@@ -15,25 +17,28 @@ const DashboardNewGroup: React.SFC<Props> = () => {
   const baseURL = process.env.REACT_APP_BACKEND_URL;
   const [state, dispatch] = newGroupReducer();
   const { groupName } = state;
+  const addGroup = async (groupName: any) => {
+    console.log(state, "addgroup");
 
-  const postNewGroup = (newGroup: any) => {
-    let headers = {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${window.localStorage.access_token}`,
-    };
-    const promise = axios.post(`${baseURL}api/group`, newGroup, {
-      headers: headers,
-    });
+    try {
+      await axios({
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${window.localStorage.access_token}`,
+        },
+        method: "post",
+        url: `${process.env.REACT_APP_BACKEND_URL}api/group`,
+        data: { groupName: state.groupName },
+      }).then(data => {
+        groupState.groups.push(data);
 
-    promise
-      .then(response => {
-        console.log("response", response.data);
-        groupDispatch({ type: "addNewGroup", payload: response.data });
-      })
-      .catch(error => {
-        groupDispatch({ type: "error", payload: error });
+        console.log(data);
       });
+    } catch (err) {
+      console.log(err);
+    }
   };
+
   return (
     <DashboardNewGroupWrapper>
       <Typography
@@ -46,9 +51,10 @@ const DashboardNewGroup: React.SFC<Props> = () => {
       </Typography>
       <Form
         className="form"
-        onSubmit={(event: { preventDefault: () => void }) => {
-          event.preventDefault();
-          postNewGroup({ groupName: state.groupName });
+        onSubmit={(e: { preventDefault: () => void }) => {
+          e.preventDefault();
+          addGroup(groupName);
+          dispatch({ type: "SET_TEXT", inputName: "groupName", value: "" });
         }}>
         <TextField
           className="input"
@@ -66,9 +72,9 @@ const DashboardNewGroup: React.SFC<Props> = () => {
         />
         <Button
           variant="contained"
+          type="submit"
           color="primary"
-          className="button"
-          type="submit">
+          className="button">
           Create New Group
         </Button>
       </Form>
