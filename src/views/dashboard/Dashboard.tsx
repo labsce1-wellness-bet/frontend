@@ -95,8 +95,28 @@ const Dashboard: React.SFC<Props> = () => {
   };
 
   useEffect(() => {
+    const getAllGroupsInfo = () => {
+      let headers = {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${window.localStorage.access_token}`,
+      };
+      const promise = axios.get(`${baseURL}api/group/all`, {
+        headers: headers,
+      });
+      console.log("getAllGroupsInfo", `${baseURL}api/group/all`);
+
+      promise
+        .then(response => {
+          console.log("response", response.data);
+          groupDispatch({ type: "getAllGroupsInfo", payload: response.data });
+        })
+        .catch(error => {
+          groupDispatch({ type: "error", payload: error });
+        });
+    };
+
     getAllGroupsInfo();
-  }, []);
+  }, [groupState.groups.length]);
 
   return (
     <DashboardWrapper>
