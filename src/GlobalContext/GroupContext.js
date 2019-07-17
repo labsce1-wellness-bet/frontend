@@ -13,6 +13,12 @@ const reducer = (state, action) => {
         groups: action.payload,
         error: "",
       };
+    case "addNewGroup":
+      return {
+        ...state,
+        groups: state.groups.push(action.payload),
+        error: "",
+      };
     case "error":
       return {
         ...state,
