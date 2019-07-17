@@ -7,6 +7,7 @@ import {
   OutlinedInput,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import axios from "axios";
 
 interface Props {}
 
@@ -35,6 +36,21 @@ const DashboardJoinGroup: React.SFC<Props> = () => {
   const textChange = (event: any) => {
     setGroupSecretText(event.target.value);
   };
+
+  // const joinGroup = async (groupCode: any) => {
+  // 	console.log("JOINGROUP", state)
+  // 	try {
+  // 	    console.log("groupCode", state.groupCode);
+  // 	    await axios({
+  // 		headers: {
+  // 		    "Content-Type": "application/json",
+  // 		    Authorization: `Bearer ${window.localStorage.access_token}`,
+  // 		},
+  // 		method: "get",
+
+  // 	    })
+  // 	}
+  // }
 
   useEffect(() => {
     setLabelWidth((labelRef.current as any).offsetWidth);
