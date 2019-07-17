@@ -29,7 +29,7 @@ import {
 } from "@material-ui/core";
 import { Settings } from "@material-ui/icons";
 //import { UserContext } from "GlobalContext/UserContext";
-import { useUserContextValue } from "GlobalContext/_UserContext";
+import { useUserContextValue } from "GlobalContext/UserContext";
 
 const useStyles = makeStyles(theme => ({
   appBar: {

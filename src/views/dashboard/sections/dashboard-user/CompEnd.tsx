@@ -26,9 +26,10 @@ const CompEnd: React.FC<Props> = props => {
 
   const classes = useStyles();
 
-  const self = group.members.find(
-    (member: { fname: string }) => member.fname === state.fname,
-  );
+  // const self = group.members.find(
+  //   (member: { fname: string }) => member.fname === state.firstName,
+  // );
+  const self = "Caleb";
 
   group.members.sort((a: any, b: any) =>
     a.progress > b.progress ? -1 : b.progress > a.progress ? 1 : 0,

@@ -4,7 +4,7 @@ import {
   //GlobalContext,
   useGlobalContextValue,
 } from "GlobalContext/GlobalContext";
-import { useUserContextValue } from "GlobalContext/_UserContext";
+import { useUserContextValue } from "GlobalContext/UserContext";
 import Auth from "Auth/Auth";
 interface Props {
   path: string;
@@ -18,7 +18,6 @@ const PrivateRoute: React.FC<Props> = ({
 }: any) => {
   // const global: { isAuthenticated?: boolean } = useContext(GlobalContext);
   const [state] = useGlobalContextValue();
-  console.log("PrivateRoute", state);
 
   return (
     <Route

@@ -13,14 +13,13 @@ import { Lock, Email } from "@material-ui/icons";
 import Fab from "@material-ui/core/Fab";
 import Auth from "Auth/Auth.js";
 import { useGlobalContextValue } from "GlobalContext/GlobalContext";
-import { useUserContextValue } from "GlobalContext/_UserContext";
+import { useUserContextValue } from "GlobalContext/UserContext";
 
 export interface Props {
   history: any;
 }
 
 const LoginSection = (props: any) => {
-  console.log(props.history);
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -40,9 +39,7 @@ const LoginSection = (props: any) => {
   };
 
   useEffect(() => {
-    console.log(window.localStorage.access_token);
     if (window.localStorage.access_token) {
-      console.log("if local storage", window.localStorage.access_token);
       auth0.returnUser(handleGetUserInfo);
       dispatch({ type: "isAuth" });
       props.history.push("/dashboard/start");
