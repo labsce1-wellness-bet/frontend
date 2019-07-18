@@ -27,13 +27,10 @@ const DashboardNewGroup: React.SFC<Props> = () => {
           Authorization: `Bearer ${window.localStorage.access_token}`,
         },
         method: "post",
-        // url: process.env.REACT_APP_BACKEND_URL + "/api/group",
-        // url: "http://localhost:5000/api/group",
-        url: `${process.env.REACT_APP_BACKEND_URL}api/group`,
+        url: `${process.env.REACT_APP_BACKEND_URL}/api/group`,
         data: { groupName: state.groupName },
       }).then(data => {
         groupState.groups.push(data);
-
         console.log(data);
       });
     } catch (err) {
