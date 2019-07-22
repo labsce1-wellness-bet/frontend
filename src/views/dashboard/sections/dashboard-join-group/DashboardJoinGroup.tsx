@@ -37,26 +37,26 @@ const DashboardJoinGroup: React.SFC<Props> = () => {
     setGroupSecretText(event.target.value);
   };
 
-  const joinGroup = async (groupCode: any) => {
-    console.log("JOINGROUP", state);
-    try {
-      console.log("groupCode", state.groupCode);
-      await axios({
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${window.localStorage.access_token}`,
-        },
-        method: "post",
-        url: `${process.env.REACT_APP_BACKEND_URL}/api/group`,
-        data: { groupSecretText: state.groupSecretText },
-      }).then(data => {
-        groupState.groups.push(data);
-        console.log(data);
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const joinGroup = async (groupCode: any) => {
+  //   console.log("JOINGROUP", state);
+  //   try {
+  //     console.log("groupCode", state.groupCode);
+  //     await axios({
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Authorization: `Bearer ${window.localStorage.access_token}`,
+  //       },
+  //       method: "post",
+  //       url: `${process.env.REACT_APP_BACKEND_URL}/api/group`,
+  //       data: { groupSecretText: state.groupSecretText },
+  //     }).then(data => {
+  //       groupState.groups.push(data);
+  //       console.log(data);
+  //     });
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   useEffect(() => {
     setLabelWidth((labelRef.current as any).offsetWidth);
@@ -67,12 +67,12 @@ const DashboardJoinGroup: React.SFC<Props> = () => {
         className="form"
         onSubmit={(e: { preventDefault: () => void }) => {
           e.preventDefault();
-          addGroup(groupSecretText);
-          dispatch({
-            type: "SET_TEXT",
-            inputName: "groupSecretText",
-            value: "",
-          });
+          // addGroup(groupSecretText);
+          // dispatch({
+          //   type: "SET_TEXT",
+          //   inputName: "groupSecretText",
+          //   value: "",
+          // });
         }}>
         <FormControl className={classes.formControl} variant="outlined">
           <InputLabel ref={labelRef} htmlFor="component-outlined">
