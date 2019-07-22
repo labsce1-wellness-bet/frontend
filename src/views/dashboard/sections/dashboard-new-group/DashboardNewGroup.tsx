@@ -8,6 +8,12 @@ import { useGroupContextValue } from "GlobalContext/GroupContext";
 import getAllGroupsInfo from "../../Dashboard";
 import axios from "axios";
 import jss from "jss";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+toast.configure({
+  hideProgressBar: true,
+});
 
 //onSubmit ={(e: { preventDefault: () => void }) =>{e.preventDefault(); addGroup(groupName)}}
 export interface Props {}
@@ -32,6 +38,7 @@ const DashboardNewGroup: React.SFC<Props> = () => {
       }).then(data => {
         groupState.groups.push(data);
         console.log(data);
+        toast("Group Added Successfully");
       });
     } catch (err) {
       console.log(err);
