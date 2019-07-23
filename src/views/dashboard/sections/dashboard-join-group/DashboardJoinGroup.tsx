@@ -10,6 +10,12 @@ import {
 import { makeStyles } from "@material-ui/core/styles";
 import axios from "axios";
 import joinGroupReducer from "./JoinGroupReducer";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+toast.configure({
+  hideProgressBar: true,
+});
 
 interface Props {}
 
@@ -33,7 +39,6 @@ const DashboardJoinGroup: React.SFC<Props> = () => {
   const labelRef = useRef(null);
   //@ts-ignore
   const classes = useStyles();
-
   const [groupState, groupDispatch] = useGroupContextValue();
   const [state, dispatch] = joinGroupReducer();
   const [groupSecretText, setGroupSecretText] = useState();
@@ -44,7 +49,7 @@ const DashboardJoinGroup: React.SFC<Props> = () => {
 
   const joinGroup = async (groupSecretText: any) => {
     console.log("state", state);
-    console.log("code", groupSecretText);
+    console.log("groupSecretText", groupSecretText);
     state.groupSecretText = groupSecretText;
     // const { groupSecretText } = state;
     try {
@@ -53,9 +58,11 @@ const DashboardJoinGroup: React.SFC<Props> = () => {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${window.localStorage.access_token}`,
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Headers": "*",
         },
-        method: "post",
-        url: `${process.env.REACT_APP_BACKEND_URL}/api/group`,
+        method: "put",
+        url: `${process.env.REACT_APP_BACKEND_URL}/api/group/join-group/${groupSecretText}`,
         data: { groupSecretText: state.groupSecretText },
       }).then(data => {
         groupState.groups.push(data);
@@ -63,6 +70,7 @@ const DashboardJoinGroup: React.SFC<Props> = () => {
       });
     } catch (err) {
       console.log("err", err);
+      toast("Group Was Not Joined");
     }
   };
 
