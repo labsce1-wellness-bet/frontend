@@ -21,22 +21,6 @@ import { GroupContextProvider } from "GlobalContext/GroupContext";
 document.title = "Wellness Bet deploy";
 
 const App: React.FC = props => {
-  // const [state, dispatch] = useGlobalContextValue();
-  // const [userState, userDispatch] = useUserContextValue();
-
-  // const handleGetUserInfo = (user: any) => {
-  //   userDispatch({ type: "setUserInfo", user });
-  // };
-
-  // useEffect(() => {
-  //   const auth0 = new Auth();
-  //   auth0.getUserInfo(handleGetUserInfo);
-  //   if (window.localStorage.access_token) {
-  //     dispatch({ type: "isAuth" });
-  //     // console.log(window.history);
-  //     // props.history.push("/dashboard/start");
-  //   }
-  // }, []);
   return (
     <div className="App">
       <GlobalContextProvider>

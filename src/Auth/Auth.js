@@ -1,6 +1,8 @@
 import auth0 from "auth0-js";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { css } from "glamor";
+
 toast.configure({
   hideProgressBar: true,
 });
@@ -30,9 +32,19 @@ export default class Auth {
         if (err) {
           console.log("SIGNUP ERROR", err);
           if (err.policy) {
-            toast(`${err.policy}`);
+            toast(`${err.policy}`, {
+              className: css({
+                background: "#3f51b5",
+                color: "#f7f2e8",
+              }),
+            });
           } else {
-            toast(`${err.description}`);
+            toast(`${err.description}`, {
+              className: css({
+                background: "#3f51b5",
+                color: "#f7f2e8",
+              }),
+            });
           }
           // toast(`${err.description}`);
           if (errorCb) {
@@ -40,7 +52,12 @@ export default class Auth {
           }
         } else {
           console.log("result", signupResult);
-          toast("User Created");
+          toast("User Created", {
+            className: css({
+              background: "#3f51b5",
+              color: "#f7f2e8",
+            }),
+          });
         }
         if (successCb) {
           console.log("success");
@@ -63,7 +80,12 @@ export default class Auth {
             errorCb();
           }
           console.log("LOGIN ERROR", err);
-          toast(`${err.description}`);
+          toast(`${err.description}`, {
+            className: css({
+              background: "#3f51b5",
+              color: "#f7f2e8",
+            }),
+          });
           return err;
         }
         if (successCb) {
