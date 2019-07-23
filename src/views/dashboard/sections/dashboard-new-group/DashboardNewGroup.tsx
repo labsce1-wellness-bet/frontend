@@ -42,6 +42,7 @@ const DashboardNewGroup: React.SFC<Props> = () => {
       });
     } catch (err) {
       console.log(err);
+      toast("Group names must be unique");
     }
   };
 
