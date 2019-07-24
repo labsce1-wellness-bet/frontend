@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { DashboardJoinGroupWrapper, Form } from "./DashboardJoinGroupStyles";
 import { useGroupContextValue } from "GlobalContext/GroupContext";
 import {
@@ -35,11 +35,11 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const DashboardJoinGroup: React.SFC<Props> = () => {
-  const [labelWidth, setLabelWidth] = useState(0);
+  const [labelWidth] = useState(0);
   const labelRef = useRef(null);
   //@ts-ignore
   const classes = useStyles();
-  const [groupState, groupDispatch] = useGroupContextValue();
+  const [groupState] = useGroupContextValue();
   const [state, dispatch] = joinGroupReducer();
   const [groupSecretText, setGroupSecretText] = useState();
 
@@ -67,6 +67,7 @@ const DashboardJoinGroup: React.SFC<Props> = () => {
       }).then(data => {
         groupState.groups.push(data);
         console.log("data", data);
+        toast("Joined Group");
       });
     } catch (err) {
       console.log("err", err);
