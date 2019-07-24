@@ -5,9 +5,9 @@ import TextField from "@material-ui/core/TextField";
 import { Button } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import { useGroupContextValue } from "GlobalContext/GroupContext";
-import getAllGroupsInfo from "../../Dashboard";
+// import getAllGroupsInfo from "../../Dashboard";
 import axios from "axios";
-import jss from "jss";
+// import jss from "jss";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -19,8 +19,8 @@ toast.configure({
 export interface Props {}
 
 const DashboardNewGroup: React.SFC<Props> = () => {
-  const [groupState, groupDispatch] = useGroupContextValue();
-  const baseURL = process.env.REACT_APP_BACKEND_URL;
+  const [groupState] = useGroupContextValue();
+  // const baseURL = process.env.REACT_APP_BACKEND_URL;
   const [state, dispatch] = newGroupReducer();
   const { groupName } = state;
   const addGroup = async (groupName: any) => {

@@ -28,7 +28,7 @@ interface Props {
   group: any;
 }
 const CompRunning: React.FC<Props> = props => {
-  const state = useContext(UserContext);
+  // const state = useContext(UserContext);
   const testState = useContext(TestUserContext);
   const group = props.group;
   const classes = useStyles();
