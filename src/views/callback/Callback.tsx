@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import {
-  // GlobalContext,
+  GlobalContext,
   useGlobalContextValue,
 } from "GlobalContext/GlobalContext";
 import Auth from "Auth/Auth";
@@ -12,7 +12,7 @@ export interface Props {
 
 const Callback: React.SFC<Props> = props => {
   const [state, dispatch] = useGlobalContextValue();
-  const [userDispatch] = useUserContextValue();
+  const [userState, userDispatch] = useUserContextValue();
 
   const handleGetUserInfo = (user: any) => {
     userDispatch({ type: "setUserInfo", user });
