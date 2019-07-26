@@ -68,12 +68,12 @@ const DashboardJoinGroup: React.SFC<Props> = () => {
         groupState.groups.push(data);
         console.log("data", data);
         const groupId = data.data.groupId;
-        const location = `${process.env.DOMAIN_NAME_DASHBOARD}/dashboard/group/${groupId}`;
+        const location = `${process.env.REACT_APP_DOMAIN_NAME}/dashboard/group/${groupId}`;
         console.log("groupId", groupId);
         console.log("location", location);
         toast("Joined Group");
         //@ts-ignore
-        window.location = `${process.env.REACT_APP_DOMAIN_NAME_DASHBOARD}/group/${groupId}`; //REDIRECT TO GROUP PAGE
+        window.location = `${process.env.REACT_APP_DOMAIN_NAME}/dashboard/group/${groupId}`; //REDIRECT TO GROUP PAGE
       });
     } catch (err) {
       console.log("err", err);
