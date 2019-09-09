@@ -1,4 +1,5 @@
 import React from "react";
+import { Route, Redirect } from "react-router";
 import { DashboardNewGroupWrapper, Form } from "./DashboardNewGroupStyles";
 import newGroupReducer from "./newGroupReducer";
 import TextField from "@material-ui/core/TextField";
@@ -61,7 +62,11 @@ const DashboardNewGroup: React.SFC<Props> = () => {
         onSubmit={(e: { preventDefault: () => void }) => {
           e.preventDefault();
           addGroup(groupName);
+          window.location.assign(
+            `${process.env.REACT_APP_DOMAIN_NAME}/dashboard/start`,
+          );
           dispatch({ type: "SET_TEXT", inputName: "groupName", value: "" });
+          return false;
         }}>
         <TextField
           className="input"
